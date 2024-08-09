@@ -4,30 +4,48 @@ extension ResponsiveEnumExt on BuildContext {
   ResponsiveEnum get responsive {
     final width = MediaQuery.sizeOf(this).width;
 
-    if (width > 0 && width <= 640) {
-      return ResponsiveEnum.mobile;
-    } else if (width > 640 && width <= 1024) {
+    if (width > 1536) {
+      return ResponsiveEnum.nextLevelDesktop;
+    } else if (width > 1280) {
+      return ResponsiveEnum.desktop;
+    } else if (width > 1024) {
+      return ResponsiveEnum.laptop;
+    } else if (width > 640) {
       return ResponsiveEnum.tablet;
     }
 
-    return ResponsiveEnum.desktop;
+    return ResponsiveEnum.mobile;
   }
 }
 
 enum ResponsiveEnum {
   mobile,
   tablet,
-  desktop;
+  laptop,
+  desktop,
+  nextLevelDesktop;
 
   bool get responsiveOnlyMobile {
     return this == ResponsiveEnum.mobile;
   }
 
+  bool get responsiveFromMobile {
+    return this == ResponsiveEnum.mobile || responsiveFromTablet;
+  }
+
   bool get responsiveFromTablet {
-    return this == ResponsiveEnum.tablet || this == ResponsiveEnum.desktop;
+    return this == ResponsiveEnum.tablet || responsiveFromLaptop;
+  }
+
+  bool get responsiveFromLaptop {
+    return this == ResponsiveEnum.laptop || responsiveFromDesktop;
   }
 
   bool get responsiveFromDesktop {
-    return this == ResponsiveEnum.desktop;
+    return this == ResponsiveEnum.desktop || responsiveFromNextLevelDesktop;
+  }
+
+  bool get responsiveFromNextLevelDesktop {
+    return this == ResponsiveEnum.nextLevelDesktop;
   }
 }
