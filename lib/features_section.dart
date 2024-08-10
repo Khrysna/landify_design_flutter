@@ -64,10 +64,9 @@ class FeaturesSection extends StatelessWidget {
               },
             ),
             LayoutGrid(
-              rowGap: 64,
-              columnGap: 30,
               rowSizes: List.generate(rowSizes, (_) => auto),
               columnSizes: List.generate(columnSizes, (_) => auto),
+              rowGap: 64,
               children: features.map((feature) {
                 return _FeatureItem(
                   title: feature.title,
