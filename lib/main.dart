@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:landify_design_flutter/companies_sections.dart';
 import 'package:landify_design_flutter/design_systems/typography/text_styles.dart';
+import 'package:landify_design_flutter/features_section.dart';
 import 'package:landify_design_flutter/gen/colors.gen.dart';
 import 'package:landify_design_flutter/main_section.dart';
 
@@ -55,6 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
         slivers: [
           SliverToBoxAdapter(child: MainSection()),
           SliverToBoxAdapter(child: CompaniesSections()),
+          SliverToBoxAdapter(child: FeaturesSection()),
         ],
       ),
     );

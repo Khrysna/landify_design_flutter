@@ -22,6 +22,13 @@ abstract class AppTextStyles {
     letterSpacing: -2.5,
   );
 
+  static final TextStyle displaySmallBold = _baseTextStyle.copyWith(
+    fontSize: 30,
+    fontWeight: FontWeight.bold,
+    height: 40 / 30,
+  );
+
+
   static final TextStyle bodyLargeRegular = _baseTextStyle.copyWith(
     fontSize: 18,
     height: 28 / 18,
@@ -30,6 +37,11 @@ abstract class AppTextStyles {
   static final TextStyle bodyMediumSemiBold = _baseTextStyle.copyWith(
     fontSize: 16,
     fontWeight: FontWeight.w600,
+    height: 24 / 16,
+  );
+
+  static final TextStyle bodyMediumRegular = _baseTextStyle.copyWith(
+    fontSize: 16,
     height: 24 / 16,
   );
 

@@ -49,6 +49,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.8"
+  equatable:
+    dependency: "direct main"
+    description:
+      name: equatable
+      sha256: c2b87cb7756efdf69892005af546c56c0b5037f54d2a88269b4f347a505e3ca2
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.5"
   fake_async:
     dependency: transitive
     description:
@@ -62,6 +70,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_layout_grid:
+    dependency: "direct main"
+    description:
+      name: flutter_layout_grid
+      sha256: "88b4f8484a0874962e27c47733ad256aeb26acc694a9f029edbef771d301885a"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.7"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -147,6 +163,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.9.0"
+  quiver:
+    dependency: transitive
+    description:
+      name: quiver
+      sha256: b1c1ac5ce6688d77f65f3375a9abb9319b3cb32486bdc7a1e0fdf004d7ba4e47
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.2.1"
   sky_engine:
     dependency: transitive
     description: flutter
