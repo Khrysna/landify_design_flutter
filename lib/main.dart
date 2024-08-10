@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:landify_design_flutter/design_systems/text_styles.dart';
+import 'package:landify_design_flutter/gen/colors.gen.dart';
 import 'package:landify_design_flutter/main_section.dart';
 
 void main() {
@@ -11,10 +13,25 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Landify Design - Flutter',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: ColorName.primary600),
         useMaterial3: true,
+        filledButtonTheme: FilledButtonThemeData(
+          style: FilledButton.styleFrom(
+            backgroundColor: ColorName.primary600,
+            minimumSize:  const Size(0, 56),
+            textStyle: AppTextStyles.bodyMediumSemiBold,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+          ),
+        ),
+        textButtonTheme: TextButtonThemeData(
+          style: TextButton.styleFrom(
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+            minimumSize: const Size(0, 56),
+            textStyle: AppTextStyles.bodyMediumSemiBold,
+          ),
+        )
       ),
       home: const MyHomePage(),
     );

@@ -25,7 +25,7 @@ enum Breakpoint {
   desktop,
   nextLevelDesktop;
 
-  bool get responsiveOnlyMobile {
+  bool get isMobile {
     return this == Breakpoint.mobile;
   }
 
