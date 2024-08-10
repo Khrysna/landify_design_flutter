@@ -67,10 +67,10 @@ class MainContent extends StatelessWidget {
     final size = MediaQuery.sizeOf(context);
 
     final height = size.height;
-    final responsive = context.responsive;
+    final breakpoint = context.breakpoint;
 
-    final isMobile = responsive.responsiveOnlyMobile;
-    final isRow = responsive.responsiveFromLaptop;
+    final isMobile = breakpoint.responsiveOnlyMobile;
+    final isRow = breakpoint.responsiveFromLaptop;
 
     final getStartedButton = FilledButton(
       onPressed: () {},
@@ -113,7 +113,7 @@ class MainContent extends StatelessWidget {
     final instruction = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildTitle(responsive),
+        _buildTitle(breakpoint),
         const SizedBox(height: 16),
         Text(
           'From the small stuff to the big picture, organizes the work so teams know what to do, why it matters, and how to get it done.',
