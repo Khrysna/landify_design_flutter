@@ -3,7 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:landify_design_flutter/components/max_container.dart';
 import 'package:landify_design_flutter/gen/assets.gen.dart';
-import 'package:landify_design_flutter/responsive_enum.dart';
+import 'package:landify_design_flutter/breakpoint.dart';
 
 void main() {
   runApp(const MyApp());
@@ -74,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
 class MainContent extends StatelessWidget {
   const MainContent({super.key});
 
-  Widget _buildTitle(ResponsiveEnum responsive) {
+  Widget _buildTitle(Breakpoint responsive) {
     double fontSize = 36.0;
     double lineHeight = 45.0;
 
