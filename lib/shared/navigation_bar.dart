@@ -9,11 +9,11 @@ class NavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final responsive = context.responsive;
+    final breakpoint = context.breakpoint;
 
-    final showNavigation = responsive.responsiveFromLaptop;
-    final showStoreLogo = responsive.responsiveFromTablet;
-    final showBarsIcon = !responsive.responsiveFromLaptop;
+    final showNavigation = breakpoint.responsiveFromLaptop;
+    final showStoreLogo = breakpoint.responsiveFromTablet;
+    final showBarsIcon = !breakpoint.responsiveFromLaptop;
 
     return SizedBox(
       height: 80,

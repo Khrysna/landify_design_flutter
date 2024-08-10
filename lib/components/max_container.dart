@@ -9,7 +9,7 @@ class MaxContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final breakpoint = context.responsive;
+    final breakpoint = context.breakpoint;
     double paddingContainer = Constants.paddingContainer;
 
     if (breakpoint.responsiveFromDesktop) {

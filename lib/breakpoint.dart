@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 extension BreakpointExt on BuildContext {
-  Breakpoint get responsive {
+  Breakpoint get breakpoint {
     final width = MediaQuery.sizeOf(this).width;
 
     if (width > 1536) {
