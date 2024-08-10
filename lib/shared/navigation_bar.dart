@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:landify_design_flutter/breakpoint.dart';
-import 'package:landify_design_flutter/configs/constants.dart';
-import 'package:landify_design_flutter/design_systems/text_styles.dart';
+import 'package:landify_design_flutter/utils/breakpoint.dart';
+import 'package:landify_design_flutter/utils/constants.dart';
+import 'package:landify_design_flutter/design_systems/typography/text_styles.dart';
 import 'package:landify_design_flutter/gen/assets.gen.dart';
 import 'package:landify_design_flutter/gen/colors.gen.dart';
 

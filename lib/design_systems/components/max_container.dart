@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:landify_design_flutter/breakpoint.dart';
-import 'package:landify_design_flutter/configs/constants.dart';
+import 'package:landify_design_flutter/utils/breakpoint.dart';
+import 'package:landify_design_flutter/utils/constants.dart';
 
 class MaxContainer extends StatelessWidget {
   const MaxContainer({super.key, required this.child});

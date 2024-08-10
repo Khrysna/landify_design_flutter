@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:landify_design_flutter/design_systems/text_styles.dart';
+import 'package:landify_design_flutter/design_systems/typography/text_styles.dart';
 import 'package:landify_design_flutter/gen/colors.gen.dart';
 import 'package:landify_design_flutter/main_section.dart';
 
