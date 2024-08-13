@@ -12,16 +12,10 @@ class MainSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.sizeOf(context).height;
-
-    return Stack(
+    return const Stack(
       children: [
-        Assets.mainBackground.image(
-          height: height,
-          width: double.infinity,
-          fit: BoxFit.fill,
-        ),
-        const MaxContainer(
+        _Background(),
+        MaxContainer(
           child: SingleChildScrollView(
             child: Column(
               children: [
@@ -35,6 +29,22 @@ class MainSection extends StatelessWidget {
     );
   }
 }
+
+class _Background extends StatelessWidget {
+  const _Background();
+
+  @override
+  Widget build(BuildContext context) {
+    final height = MediaQuery.sizeOf(context).height;
+
+    return Assets.mainBackground.image(
+      height: height,
+      width: double.infinity,
+      fit: BoxFit.fill,
+    );
+  }
+}
+
 
 class MainContent extends StatelessWidget {
   const MainContent({super.key});
