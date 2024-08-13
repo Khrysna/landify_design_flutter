@@ -53,7 +53,10 @@ class _Information extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Assets.logoMini.image(height: 32, width: 32),
+        Padding(
+          padding: const EdgeInsets.only(left: 8),
+          child: Assets.logoMini.image(height: 32, width: 32),
+        ),
         const SizedBox(height: 24),
         const Wrap(
           children: [
@@ -72,9 +75,12 @@ class _Information extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 24),
-        Text(
-          '© 2021 Landify UI Kit. All rights reserved',
-          style: AppTextStyles.bodySmallRegular.copyWith(color: AppColors.neutral300),
+        Padding(
+          padding: const EdgeInsets.only(left: 8),
+          child: Text(
+            '© 2021 Landify UI Kit. All rights reserved',
+            style: AppTextStyles.bodySmallRegular.copyWith(color: AppColors.neutral300),
+          ),
         ),
       ],
     );
@@ -90,18 +96,21 @@ class _GetApps extends StatelessWidget {
 
     return Align(
       alignment: breakpoint.responsiveFromTablet ? Alignment.topRight : Alignment.topLeft,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Get the App',
-            style: AppTextStyles.bodyLargeMedium.copyWith(color: AppColors.neutral300),
-          ),
-          const SizedBox(height: 16),
-          Assets.googlePlay.image(height: 40),
-          const SizedBox(height: 16),
-          Assets.appStore.image(height: 40),
-        ],
+      child: Padding(
+        padding: const EdgeInsets.only(left: 8),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Get the App',
+              style: AppTextStyles.bodyLargeMedium.copyWith(color: AppColors.neutral300),
+            ),
+            const SizedBox(height: 16),
+            Assets.googlePlay.image(height: 40),
+            const SizedBox(height: 16),
+            Assets.appStore.image(height: 40),
+          ],
+        ),
       ),
     );
   }
