@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:landify_design_flutter/design_systems/components/max_container.dart';
+import 'package:landify_design_flutter/design_systems/components/text_link_button.dart';
 import 'package:landify_design_flutter/design_systems/typography/text_styles.dart';
 import 'package:landify_design_flutter/gen/assets.gen.dart';
 import 'package:landify_design_flutter/gen/colors.gen.dart';
@@ -55,24 +56,19 @@ class _Information extends StatelessWidget {
         Assets.logoMini.image(height: 32, width: 32),
         const SizedBox(height: 24),
         const Wrap(
-          runSpacing: 12,
-          spacing: 24,
           children: [
-            _Menu('Download Now'),
-            _Menu('License'),
+            TextLinkButton.dark('Download Now'),
+            TextLinkButton.dark('License'),
           ],
         ),
-        const SizedBox(height: 12),
         const Wrap(
-          runSpacing: 12,
-          spacing: 24,
           children: [
-            _Menu('About'),
-            _Menu('Features'),
-            _Menu('Pricing'),
-            _Menu('News'),
-            _Menu('Help'),
-            _Menu('Contact'),
+            TextLinkButton.dark('About'),
+            TextLinkButton.dark('Features'),
+            TextLinkButton.dark('Pricing'),
+            TextLinkButton.dark('News'),
+            TextLinkButton.dark('Help'),
+            TextLinkButton.dark('Contact'),
           ],
         ),
         const SizedBox(height: 24),
@@ -108,16 +104,5 @@ class _GetApps extends StatelessWidget {
         ],
       ),
     );
-  }
-}
-
-class _Menu extends StatelessWidget {
-  const _Menu(this.label);
-
-  final String label;
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(label, style: AppTextStyles.bodyMediumRegular.copyWith(color: Colors.white));
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:landify_design_flutter/design_systems/components/text_link_button.dart';
 import 'package:landify_design_flutter/utils/breakpoint.dart';
 import 'package:landify_design_flutter/utils/constants.dart';
 import 'package:landify_design_flutter/design_systems/typography/text_styles.dart';
@@ -27,10 +28,7 @@ class NavBar extends StatelessWidget {
             const SizedBox(width: 32),
             ...List.generate(
               navigation.length,
-              (index) => _NavigationItem(
-                index: index,
-                title: navigation[index],
-              ),
+              (index) => TextLinkButton.light(navigation[index]),
             ),
           },
           if (showStoreLogo || showBarsIcon) ...{
@@ -46,41 +44,6 @@ class NavBar extends StatelessWidget {
             }
           },
         ],
-      ),
-    );
-  }
-}
-
-class _NavigationItem extends StatelessWidget {
-  const _NavigationItem({
-    required this.index,
-    required this.title,
-  });
-
-  final int index;
-
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    return SelectionContainer.disabled(
-      child: TextButton(
-        onPressed: () {},
-        style: ButtonStyle(
-          minimumSize: null,
-          padding: const WidgetStatePropertyAll(EdgeInsets.symmetric(horizontal: 12)),
-          overlayColor: const WidgetStatePropertyAll(Colors.transparent),
-          foregroundColor: WidgetStateProperty.resolveWith<Color>(
-            (Set<WidgetState> states) {
-              if (states.contains(WidgetState.hovered)) {
-                return ColorName.primary600;
-              }
-
-              return ColorName.neutral900;
-            },
-          ),
-        ),
-        child: Text(title, style: AppTextStyles.bodySmallSemiBold),
       ),
     );
   }
