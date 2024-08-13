@@ -90,7 +90,7 @@ class _Description extends StatelessWidget {
               const SizedBox(width: 12),
               Assets.appStore.image(height: 40),
             ],
-          )
+          ),
         ],
       ),
     );

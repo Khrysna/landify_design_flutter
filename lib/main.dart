@@ -3,6 +3,7 @@ import 'package:landify_design_flutter/achievements_section.dart';
 import 'package:landify_design_flutter/companies_sections.dart';
 import 'package:landify_design_flutter/design_systems/typography/text_styles.dart';
 import 'package:landify_design_flutter/features_section.dart';
+import 'package:landify_design_flutter/footer_section.dart';
 import 'package:landify_design_flutter/gen/colors.gen.dart';
 import 'package:landify_design_flutter/get_app_section.dart';
 import 'package:landify_design_flutter/integrations_section.dart';
@@ -65,6 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
           SliverToBoxAdapter(child: AchievementsSection()),
           SliverToBoxAdapter(child: IntegrationsSection()),
           SliverToBoxAdapter(child: GetAppSection()),
+          SliverToBoxAdapter(child: FooterSection()),
         ],
       ),
     );
