@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:landify_design_flutter/design_systems/typography/text_styles.dart';
-import 'package:landify_design_flutter/utils/colors.dart';
+import 'package:landify_design_flutter/design_systems/colors/colors.dart';
 
 class TextLinkButton extends StatelessWidget {
   const TextLinkButton.light(this.text, {super.key}) : this.color = AppColors.neutral900;
