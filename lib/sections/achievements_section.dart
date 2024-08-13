@@ -1,4 +1,3 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
@@ -6,8 +5,8 @@ import 'package:landify_design_flutter/design_systems/components/label_with_desc
 import 'package:landify_design_flutter/design_systems/components/max_container.dart';
 import 'package:landify_design_flutter/design_systems/typography/text_styles.dart';
 import 'package:landify_design_flutter/gen/assets.gen.dart';
-import 'package:landify_design_flutter/gen/colors.gen.dart';
 import 'package:landify_design_flutter/utils/breakpoint.dart';
+import 'package:landify_design_flutter/utils/colors.dart';
 
 class AchievementsSection extends StatelessWidget {
   const AchievementsSection({super.key});
@@ -138,8 +137,8 @@ class _AchievementItem extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(title, style: titleStyle.copyWith(color: ColorName.neutral900)),
-              Text(subtitle, style: subtitleStyle.copyWith(color: ColorName.neutral900)),
+              Text(title, style: titleStyle.copyWith(color: AppColors.neutral900)),
+              Text(subtitle, style: subtitleStyle.copyWith(color: AppColors.neutral900)),
             ],
           ),
         ),

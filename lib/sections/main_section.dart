@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:landify_design_flutter/utils/breakpoint.dart';
 import 'package:landify_design_flutter/design_systems/components/max_container.dart';
+import 'package:landify_design_flutter/utils/colors.dart';
 import 'package:landify_design_flutter/utils/constants.dart';
 import 'package:landify_design_flutter/design_systems/typography/text_styles.dart';
 import 'package:landify_design_flutter/gen/assets.gen.dart';
-import 'package:landify_design_flutter/gen/colors.gen.dart';
 import 'package:landify_design_flutter/shared/navigation_bar.dart';
 
 class MainSection extends StatelessWidget {
@@ -120,7 +120,7 @@ class _Title extends StatelessWidget {
 
     return Text(
       'The easiest way to manage projects',
-      style: titleStyle.copyWith(color: ColorName.neutral900),
+      style: titleStyle.copyWith(color: AppColors.neutral900),
     );
   }
 }
@@ -133,7 +133,7 @@ class _Description extends StatelessWidget {
     return Text(
       'From the small stuff to the big picture, organizes the work so teams know what to do, why it matters, and how to get it done.',
       style: AppTextStyles.bodyLargeRegular.copyWith(
-        color: ColorName.neutral700,
+        color: AppColors.neutral700,
       ),
     );
   }

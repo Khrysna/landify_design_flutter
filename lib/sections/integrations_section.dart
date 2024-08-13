@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:landify_design_flutter/design_systems/components/label_with_description.dart';
 import 'package:landify_design_flutter/design_systems/components/max_container.dart';
-import 'package:landify_design_flutter/design_systems/typography/text_styles.dart';
 import 'package:landify_design_flutter/gen/assets.gen.dart';
-import 'package:landify_design_flutter/gen/colors.gen.dart';
 import 'package:landify_design_flutter/utils/breakpoint.dart';
 
 class IntegrationsSection extends StatelessWidget {

@@ -5,8 +5,8 @@ import 'package:landify_design_flutter/design_systems/components/label_with_desc
 import 'package:landify_design_flutter/design_systems/components/max_container.dart';
 import 'package:landify_design_flutter/design_systems/typography/text_styles.dart';
 import 'package:landify_design_flutter/gen/assets.gen.dart';
-import 'package:landify_design_flutter/gen/colors.gen.dart';
 import 'package:landify_design_flutter/utils/breakpoint.dart';
+import 'package:landify_design_flutter/utils/colors.dart';
 
 class FeaturesSection extends StatelessWidget {
   const FeaturesSection({super.key});
@@ -96,13 +96,13 @@ class _FeatureItem extends StatelessWidget {
             const SizedBox(height: 24),
             Text(
               title,
-              style: AppTextStyles.displaySmallBold.copyWith(color: ColorName.neutral900),
+              style: AppTextStyles.displaySmallBold.copyWith(color: AppColors.neutral900),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 8),
             Text(
               description,
-              style: AppTextStyles.bodyMediumRegular.copyWith(color: ColorName.neutral700),
+              style: AppTextStyles.bodyMediumRegular.copyWith(color: AppColors.neutral700),
               textAlign: TextAlign.center,
             ),
           ],

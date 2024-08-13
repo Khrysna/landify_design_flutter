@@ -3,8 +3,8 @@ import 'package:landify_design_flutter/design_systems/components/max_container.d
 import 'package:landify_design_flutter/design_systems/components/text_link_button.dart';
 import 'package:landify_design_flutter/design_systems/typography/text_styles.dart';
 import 'package:landify_design_flutter/gen/assets.gen.dart';
-import 'package:landify_design_flutter/gen/colors.gen.dart';
 import 'package:landify_design_flutter/utils/breakpoint.dart';
+import 'package:landify_design_flutter/utils/colors.dart';
 
 class FooterSection extends StatelessWidget {
   const FooterSection({super.key});
@@ -74,7 +74,7 @@ class _Information extends StatelessWidget {
         const SizedBox(height: 24),
         Text(
           '© 2021 Landify UI Kit. All rights reserved',
-          style: AppTextStyles.bodySmallRegular.copyWith(color: ColorName.neutral300),
+          style: AppTextStyles.bodySmallRegular.copyWith(color: AppColors.neutral300),
         ),
       ],
     );
@@ -95,7 +95,7 @@ class _GetApps extends StatelessWidget {
         children: [
           Text(
             'Get the App',
-            style: AppTextStyles.bodyLargeMedium.copyWith(color: ColorName.neutral300),
+            style: AppTextStyles.bodyLargeMedium.copyWith(color: AppColors.neutral300),
           ),
           const SizedBox(height: 16),
           Assets.googlePlay.image(height: 40),

@@ -3,8 +3,8 @@ import 'package:landify_design_flutter/design_systems/components/label_with_desc
 import 'package:landify_design_flutter/design_systems/components/max_container.dart';
 import 'package:landify_design_flutter/design_systems/typography/text_styles.dart';
 import 'package:landify_design_flutter/gen/assets.gen.dart';
-import 'package:landify_design_flutter/gen/colors.gen.dart';
 import 'package:landify_design_flutter/utils/breakpoint.dart';
+import 'package:landify_design_flutter/utils/colors.dart';
 
 class StoriesSection extends StatelessWidget {
   const StoriesSection({super.key});
@@ -14,7 +14,7 @@ class StoriesSection extends StatelessWidget {
     final breakpoint = context.breakpoint;
 
     return Container(
-      color: ColorName.secondary100,
+      color: AppColors.secondary100,
       padding: const EdgeInsets.only(top: 64, bottom: 96),
       child: MaxContainer(
         child: Stack(
@@ -173,13 +173,13 @@ class _StoryItem extends StatelessWidget {
             offset: const Offset(0, 4),
             blurRadius: 8,
             spreadRadius: -2,
-            color: ColorName.neutral900.withOpacity(0.1),
+            color: AppColors.neutral900.withOpacity(0.1),
           ),
           BoxShadow(
             offset: const Offset(0, 2),
             blurRadius: 4,
             spreadRadius: -2,
-            color: ColorName.neutral900.withOpacity(0.06),
+            color: AppColors.neutral900.withOpacity(0.06),
           ),
         ],
       ),
@@ -200,20 +200,20 @@ class _StoryItem extends StatelessWidget {
                     Text(
                       story,
                       style: AppTextStyles.bodyLargeRegular.copyWith(
-                        color: ColorName.neutral900,
+                        color: AppColors.neutral900,
                       ),
                     ),
                     const SizedBox(height: 24),
                     Text(
                       personName,
                       style: AppTextStyles.bodyLargeBold.copyWith(
-                        color: ColorName.neutral900,
+                        color: AppColors.neutral900,
                       ),
                     ),
                     Text(
                       '$position, $company',
                       style: AppTextStyles.bodyMediumRegular.copyWith(
-                        color: ColorName.neutral500,
+                        color: AppColors.neutral500,
                       ),
                     ),
                   ],

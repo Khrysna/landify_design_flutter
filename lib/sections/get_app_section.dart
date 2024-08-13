@@ -3,8 +3,8 @@ import 'package:landify_design_flutter/design_systems/components/label_with_desc
 import 'package:landify_design_flutter/design_systems/components/max_container.dart';
 import 'package:landify_design_flutter/design_systems/typography/text_styles.dart';
 import 'package:landify_design_flutter/gen/assets.gen.dart';
-import 'package:landify_design_flutter/gen/colors.gen.dart';
 import 'package:landify_design_flutter/utils/breakpoint.dart';
+import 'package:landify_design_flutter/utils/colors.dart';
 
 class GetAppSection extends StatelessWidget {
   const GetAppSection({super.key});
@@ -33,9 +33,9 @@ class GetAppSection extends StatelessWidget {
     }
 
     return Container(
-      color: ColorName.secondary600,
+      color: AppColors.secondary600,
       child: MaxContainer(
-        child: Container(
+        child: SizedBox(
           width: double.infinity,
           child: content,
         ),
@@ -49,19 +49,6 @@ class _Description extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final breakpoint = context.breakpoint;
-
-    TextStyle titleStyle = AppTextStyles.displaySmallBold;
-    TextStyle subtitleStyle = AppTextStyles.bodyMediumRegular;
-
-    if (breakpoint.responsiveFromLaptop) {
-      titleStyle = AppTextStyles.displayLargeBold;
-      subtitleStyle = AppTextStyles.bodyLargeRegular;
-    } else if (breakpoint.responsiveFromTablet) {
-      titleStyle = AppTextStyles.displayMediumBold;
-      subtitleStyle = AppTextStyles.bodyLargeRegular;
-    }
-
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 48),
       child: Column(
@@ -77,7 +64,7 @@ class _Description extends StatelessWidget {
           Text(
             'Get the App',
             style: AppTextStyles.bodyLargeMedium.copyWith(
-              color: ColorName.neutral900,
+              color: AppColors.neutral900,
             ),
           ),
           const SizedBox(height: 8),
