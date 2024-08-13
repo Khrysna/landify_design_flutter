@@ -28,10 +28,15 @@ abstract class AppTextStyles {
     height: 40 / 30,
   );
 
-
   static final TextStyle bodyLargeRegular = _baseTextStyle.copyWith(
     fontSize: 18,
     height: 28 / 18,
+  );
+
+  static final TextStyle bodyLargeBold = _baseTextStyle.copyWith(
+    fontSize: 18,
+    height: 28 / 18,
+    fontWeight: FontWeight.bold,
   );
 
   static final TextStyle bodyMediumSemiBold = _baseTextStyle.copyWith(
