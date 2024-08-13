@@ -63,23 +63,25 @@ class _NavigationItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final text = Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
-      child: Text(
-        title,
-        style: AppTextStyles.bodySmallSemiBold.copyWith(
-          color: ColorName.neutral900,
+    return SelectionContainer.disabled(
+      child: TextButton(
+        onPressed: () {},
+        style: ButtonStyle(
+          minimumSize: null,
+          padding: const WidgetStatePropertyAll(EdgeInsets.symmetric(horizontal: 12)),
+          overlayColor: const WidgetStatePropertyAll(Colors.transparent),
+          foregroundColor: WidgetStateProperty.resolveWith<Color>(
+            (Set<WidgetState> states) {
+              if (states.contains(WidgetState.hovered)) {
+                return ColorName.primary600;
+              }
+
+              return ColorName.neutral900;
+            },
+          ),
         ),
+        child: Text(title, style: AppTextStyles.bodySmallSemiBold),
       ),
     );
-
-    if (index < 3) {
-      return Container(
-        margin: const EdgeInsets.only(right: 8),
-        child: text,
-      );
-    }
-
-    return text;
   }
 }
