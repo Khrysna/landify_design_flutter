@@ -57,7 +57,7 @@ class _LeftSection extends StatelessWidget {
       builder: (context, constraint) {
         if (breakpoint.responsiveFromLaptop) {
           padding = const EdgeInsets.only(top: 56, left: 104);
-          widthStoryContent = constraint.maxWidth * 0.65;
+          widthStoryContent = constraint.maxWidth * 0.7;
         }
 
         return Padding(
@@ -110,7 +110,7 @@ class _RightSection extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraint) {
         if (breakpoint.responsiveFromLaptop) {
-          widthStoryContent1 = constraint.maxWidth * 0.8;
+          widthStoryContent1 = constraint.maxWidth * 0.9;
           widthStoryContent2 = constraint.maxWidth * 0.7;
         }
 
