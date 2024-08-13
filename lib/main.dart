@@ -57,19 +57,21 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: Colors.white,
-      body: CustomScrollView(
-        slivers: [
-          SliverToBoxAdapter(child: MainSection()),
-          SliverToBoxAdapter(child: CompaniesSections()),
-          SliverToBoxAdapter(child: FeaturesSection()),
-          SliverToBoxAdapter(child: StoriesSection()),
-          SliverToBoxAdapter(child: AchievementsSection()),
-          SliverToBoxAdapter(child: IntegrationsSection()),
-          SliverToBoxAdapter(child: GetAppSection()),
-          SliverToBoxAdapter(child: FooterSection()),
-        ],
+    return const SelectionArea(
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        body: CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(child: MainSection()),
+            SliverToBoxAdapter(child: CompaniesSections()),
+            SliverToBoxAdapter(child: FeaturesSection()),
+            SliverToBoxAdapter(child: StoriesSection()),
+            SliverToBoxAdapter(child: AchievementsSection()),
+            SliverToBoxAdapter(child: IntegrationsSection()),
+            SliverToBoxAdapter(child: GetAppSection()),
+            SliverToBoxAdapter(child: FooterSection()),
+          ],
+        ),
       ),
     );
   }
