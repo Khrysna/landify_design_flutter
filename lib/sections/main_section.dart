@@ -45,7 +45,6 @@ class _Background extends StatelessWidget {
   }
 }
 
-
 class MainContent extends StatelessWidget {
   const MainContent({super.key});
 
@@ -119,7 +118,7 @@ class _Title extends StatelessWidget {
       titleStyle = AppTextStyles.displayLargeBold;
     }
 
-    return SelectableText(
+    return Text(
       'The easiest way to manage projects',
       style: titleStyle.copyWith(color: ColorName.neutral900),
     );
@@ -131,7 +130,7 @@ class _Description extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SelectableText(
+    return Text(
       'From the small stuff to the big picture, organizes the work so teams know what to do, why it matters, and how to get it done.',
       style: AppTextStyles.bodyLargeRegular.copyWith(
         color: ColorName.neutral700,
@@ -172,9 +171,11 @@ class _GetStartedButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FilledButton(
-      onPressed: () {},
-      child: const Text('Get Started'),
+    return SelectionContainer.disabled(
+      child: FilledButton(
+        onPressed: () {},
+        child: const Text('Get Started'),
+      ),
     );
   }
 }
@@ -184,15 +185,17 @@ class _WatchVideoButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-      onPressed: () {},
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Assets.play.image(width: 24, height: 24),
-          const SizedBox(width: 8),
-          const Text('Watch Video'),
-        ],
+    return SelectionContainer.disabled(
+      child: TextButton(
+        onPressed: () {},
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Assets.play.image(width: 24, height: 24),
+            const SizedBox(width: 8),
+            const Text('Watch Video'),
+          ],
+        ),
       ),
     );
   }
