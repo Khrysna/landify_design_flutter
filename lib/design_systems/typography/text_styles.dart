@@ -39,6 +39,12 @@ abstract class AppTextStyles {
     height: 28 / 18,
   );
 
+  static final TextStyle bodyLargeMedium = _baseTextStyle.copyWith(
+    fontSize: 18,
+    height: 28 / 18,
+    fontWeight: FontWeight.w500,
+  );
+
   static final TextStyle bodyLargeBold = _baseTextStyle.copyWith(
     fontSize: 18,
     height: 28 / 18,
