@@ -4,11 +4,11 @@ import 'package:landify_design_flutter/sections/companies_sections.dart';
 import 'package:landify_design_flutter/design_systems/typography/text_styles.dart';
 import 'package:landify_design_flutter/sections/features_section.dart';
 import 'package:landify_design_flutter/sections/footer_section.dart';
-import 'package:landify_design_flutter/gen/colors.gen.dart';
 import 'package:landify_design_flutter/sections/get_app_section.dart';
 import 'package:landify_design_flutter/sections/integrations_section.dart';
 import 'package:landify_design_flutter/sections/main_section.dart';
 import 'package:landify_design_flutter/sections/stories_section.dart';
+import 'package:landify_design_flutter/utils/colors.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,11 +22,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Landify Design - Flutter',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: ColorName.primary600),
+        colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primary600),
         useMaterial3: true,
         filledButtonTheme: FilledButtonThemeData(
           style: FilledButton.styleFrom(
-            backgroundColor: ColorName.primary600,
+            backgroundColor: AppColors.primary600,
             minimumSize:  const Size(0, 56),
             textStyle: AppTextStyles.bodyMediumSemiBold,
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
             minimumSize: const Size(0, 56),
             textStyle: AppTextStyles.bodyMediumSemiBold,
-            foregroundColor: ColorName.primary600,
+            foregroundColor: AppColors.primary600,
           ),
         )
       ),
