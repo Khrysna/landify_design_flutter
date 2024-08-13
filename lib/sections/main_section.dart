@@ -4,7 +4,7 @@ import 'package:landify_design_flutter/design_systems/components/max_container.d
 import 'package:landify_design_flutter/utils/colors.dart';
 import 'package:landify_design_flutter/utils/constants.dart';
 import 'package:landify_design_flutter/design_systems/typography/text_styles.dart';
-import 'package:landify_design_flutter/gen/assets.gen.dart';
+import 'package:landify_design_flutter/utils/assets.dart';
 import 'package:landify_design_flutter/shared/navigation_bar.dart';
 
 class MainSection extends StatelessWidget {

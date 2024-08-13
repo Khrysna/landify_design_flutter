@@ -4,7 +4,7 @@ import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 import 'package:landify_design_flutter/design_systems/components/label_with_description.dart';
 import 'package:landify_design_flutter/design_systems/components/max_container.dart';
 import 'package:landify_design_flutter/design_systems/typography/text_styles.dart';
-import 'package:landify_design_flutter/gen/assets.gen.dart';
+import 'package:landify_design_flutter/utils/assets.dart';
 import 'package:landify_design_flutter/utils/breakpoint.dart';
 import 'package:landify_design_flutter/utils/colors.dart';
 

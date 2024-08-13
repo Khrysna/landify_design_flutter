@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:landify_design_flutter/design_systems/components/max_container.dart';
-import 'package:landify_design_flutter/gen/assets.gen.dart';
+import 'package:landify_design_flutter/utils/assets.dart';
 
 class CompaniesSections extends StatelessWidget {
   const CompaniesSections({super.key});

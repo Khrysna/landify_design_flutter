@@ -44,8 +44,3 @@ flutter:
           weight: 800
         - asset: assets/font/Inter-Black.ttf
           weight: 900
-
-flutter_gen:
-  colors:
-    inputs:
-      - assets/color/colors.xml
