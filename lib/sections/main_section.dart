@@ -119,7 +119,7 @@ class _Title extends StatelessWidget {
       titleStyle = AppTextStyles.displayLargeBold;
     }
 
-    return Text(
+    return SelectableText(
       'The easiest way to manage projects',
       style: titleStyle.copyWith(color: ColorName.neutral900),
     );
@@ -131,7 +131,7 @@ class _Description extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
+    return SelectableText(
       'From the small stuff to the big picture, organizes the work so teams know what to do, why it matters, and how to get it done.',
       style: AppTextStyles.bodyLargeRegular.copyWith(
         color: ColorName.neutral700,
