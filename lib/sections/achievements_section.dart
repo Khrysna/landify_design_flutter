@@ -6,7 +6,7 @@ import 'package:landify_design_flutter/design_systems/components/max_container.d
 import 'package:landify_design_flutter/design_systems/typography/text_styles.dart';
 import 'package:landify_design_flutter/utils/assets.dart';
 import 'package:landify_design_flutter/utils/breakpoint.dart';
-import 'package:landify_design_flutter/utils/colors.dart';
+import 'package:landify_design_flutter/design_systems/colors/colors.dart';
 
 class AchievementsSection extends StatelessWidget {
   const AchievementsSection({super.key});

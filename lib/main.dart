@@ -8,7 +8,7 @@ import 'package:landify_design_flutter/sections/get_app_section.dart';
 import 'package:landify_design_flutter/sections/integrations_section.dart';
 import 'package:landify_design_flutter/sections/main_section.dart';
 import 'package:landify_design_flutter/sections/stories_section.dart';
-import 'package:landify_design_flutter/utils/colors.dart';
+import 'package:landify_design_flutter/design_systems/colors/colors.dart';
 
 void main() {
   runApp(const MyApp());

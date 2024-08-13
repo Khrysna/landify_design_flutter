@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:landify_design_flutter/design_systems/typography/text_styles.dart';
 import 'package:landify_design_flutter/utils/breakpoint.dart';
-import 'package:landify_design_flutter/utils/colors.dart';
+import 'package:landify_design_flutter/design_systems/colors/colors.dart';
 
 enum LabelWithDescriptionAlign { start, center }
 
