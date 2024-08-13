@@ -30,6 +30,7 @@ class MyApp extends StatelessWidget {
             minimumSize:  const Size(0, 56),
             textStyle: AppTextStyles.bodyMediumSemiBold,
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+            foregroundColor: Colors.white,
           ),
         ),
         textButtonTheme: TextButtonThemeData(
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
             minimumSize: const Size(0, 56),
             textStyle: AppTextStyles.bodyMediumSemiBold,
+            foregroundColor: ColorName.primary600,
           ),
         )
       ),
