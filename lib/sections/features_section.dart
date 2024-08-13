@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
+import 'package:landify_design_flutter/design_systems/components/label_with_description.dart';
 import 'package:landify_design_flutter/design_systems/components/max_container.dart';
 import 'package:landify_design_flutter/design_systems/typography/text_styles.dart';
 import 'package:landify_design_flutter/gen/assets.gen.dart';
@@ -41,24 +42,12 @@ class FeaturesSection extends StatelessWidget {
                 return Container(
                   width: width,
                   padding: const EdgeInsets.all(16),
-                  child: Column(
-                    children: [
-                      Text(
-                        'Tailor-made features',
-                        style: AppTextStyles.displayMediumBold.copyWith(
-                          color: ColorName.neutral900,
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-                      Text(
+                  margin: const EdgeInsets.only(bottom: 64),
+                  child: const LabelWithDescription(
+                    labelWithDescriptionAlign: LabelWithDescriptionAlign.center,
+                    title: 'Tailor-made features',
+                    subtitle:
                         'Lorem ipsum is common placeholder text used to demonstrate the graphic elements of a document or visual presentation.',
-                        style: AppTextStyles.bodyLargeRegular.copyWith(
-                          color: ColorName.neutral900,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                      const SizedBox(height: 64),
-                    ],
                   ),
                 );
               },

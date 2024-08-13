@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:landify_design_flutter/design_systems/components/label_with_description.dart';
 import 'package:landify_design_flutter/design_systems/components/max_container.dart';
 import 'package:landify_design_flutter/design_systems/typography/text_styles.dart';
 import 'package:landify_design_flutter/gen/assets.gen.dart';
@@ -47,32 +48,10 @@ class _Description extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final breakpoint = context.breakpoint;
-
-    TextStyle titleStyle = AppTextStyles.displaySmallBold;
-    TextStyle subtitleStyle = AppTextStyles.bodyMediumRegular;
-
-    if (breakpoint.responsiveFromLaptop) {
-      titleStyle = AppTextStyles.displayLargeBold;
-      subtitleStyle = AppTextStyles.bodyLargeRegular;
-    } else if (breakpoint.responsiveFromTablet) {
-      titleStyle = AppTextStyles.displayMediumBold;
-      subtitleStyle = AppTextStyles.bodyLargeRegular;
-    }
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'Easy integrations with 170+ tools',
-          style: titleStyle.copyWith(color: ColorName.neutral900),
-        ),
-        const SizedBox(height: 8),
-        Text(
+    return const LabelWithDescription(
+      title: 'Easy integrations with 170+ tools',
+      subtitle:
           'Connect Landify with your favourite tools that you use daily and keep things on track.',
-          style: subtitleStyle.copyWith(color: ColorName.neutral900),
-        ),
-      ],
     );
   }
 }

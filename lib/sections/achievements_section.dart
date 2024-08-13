@@ -2,6 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
+import 'package:landify_design_flutter/design_systems/components/label_with_description.dart';
 import 'package:landify_design_flutter/design_systems/components/max_container.dart';
 import 'package:landify_design_flutter/design_systems/typography/text_styles.dart';
 import 'package:landify_design_flutter/gen/assets.gen.dart';
@@ -48,32 +49,9 @@ class _LeftSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final breakpoint = context.breakpoint;
-
-    TextStyle titleStyle = AppTextStyles.displaySmallBold;
-    TextStyle subtitleStyle = AppTextStyles.bodyMediumRegular;
-
-    if (breakpoint.responsiveFromLaptop) {
-      titleStyle = AppTextStyles.displayLargeBold;
-      subtitleStyle = AppTextStyles.bodyLargeRegular;
-    } else if (breakpoint.responsiveFromTablet) {
-      titleStyle = AppTextStyles.displayMediumBold;
-      subtitleStyle = AppTextStyles.bodyLargeRegular;
-    }
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'Our 18 years of achievements',
-          style: titleStyle.copyWith(color: ColorName.neutral900),
-        ),
-        const SizedBox(height: 8),
-        Text(
-          'With our super powers we have reached this',
-          style: subtitleStyle.copyWith(color: ColorName.neutral900),
-        ),
-      ],
+    return const LabelWithDescription(
+      title: 'Our 18 years of achievements',
+      subtitle: 'With our super powers we have reached this',
     );
   }
 }

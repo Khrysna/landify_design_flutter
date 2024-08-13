@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:landify_design_flutter/design_systems/components/label_with_description.dart';
 import 'package:landify_design_flutter/design_systems/components/max_container.dart';
 import 'package:landify_design_flutter/design_systems/typography/text_styles.dart';
 import 'package:landify_design_flutter/gen/assets.gen.dart';
@@ -67,14 +68,10 @@ class _Description extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            'Manage all projects from your mobile',
-            style: titleStyle.copyWith(color: ColorName.neutral900),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            'Download the app to manage your projects, keep track of the progress and complete tasks without procastinating. Stay on track and complete on time!',
-            style: subtitleStyle.copyWith(color: ColorName.neutral900),
+          const LabelWithDescription(
+            title: 'Manage all projects from your mobile',
+            subtitle:
+                'Download the app to manage your projects, keep track of the progress and complete tasks without procastinating. Stay on track and complete on time!',
           ),
           const SizedBox(height: 48),
           Text(

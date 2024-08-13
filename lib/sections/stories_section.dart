@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:landify_design_flutter/design_systems/components/label_with_description.dart';
 import 'package:landify_design_flutter/design_systems/components/max_container.dart';
 import 'package:landify_design_flutter/design_systems/typography/text_styles.dart';
 import 'package:landify_design_flutter/gen/assets.gen.dart';
@@ -50,7 +51,7 @@ class _LeftSection extends StatelessWidget {
   Widget build(BuildContext context) {
     final breakpoint = context.breakpoint;
 
-    EdgeInsets padding = const EdgeInsets.only(bottom: 32);
+    EdgeInsets padding = const EdgeInsets.only(top: 56, bottom: 32);
     double widthStoryContent = double.infinity;
 
     return LayoutBuilder(
@@ -65,14 +66,9 @@ class _LeftSection extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'Real Stories from Real Customers',
-                style: AppTextStyles.displayLargeBold,
-              ),
-              const SizedBox(height: 8),
-              Text(
-                'Get inspired by these stories.',
-                style: AppTextStyles.bodyLargeRegular,
+              const LabelWithDescription(
+                title: 'Real Stories from Real Customers',
+                subtitle: 'Get inspired by these stories.',
               ),
               const SizedBox(height: 64),
               Align(
