@@ -118,7 +118,7 @@ class BreakpointProvider extends InheritedWidget {
 extension BreakpointExtension on Breakpoint {
   ResponsiveRowColumnType getRowTypeWhenLargerOrEqualTo(Breakpoint breakpoint) {
     return largerOrEqualTo(breakpoint)
-        ? ResponsiveRowColumnType.ROW
-        : ResponsiveRowColumnType.COLUMN;
+        ? ResponsiveRowColumnType.row
+        : ResponsiveRowColumnType.column;
   }
 }

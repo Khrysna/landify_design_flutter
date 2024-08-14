@@ -1,12 +1,10 @@
-// ignore_for_file: constant_identifier_names
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
 
-enum ResponsiveRowColumnType {
-  ROW,
-  COLUMN,
-}
+/// This class is adapted from the [responsive_framework](https://pub.dev/packages/responsive_framework) package.
+/// The original source can be viewed on [GitHub](https://github.com/Codelessly/ResponsiveFramework/blob/master/lib/src/responsive_row_column.dart).
+
+enum ResponsiveRowColumnType { row, column }
 
 /// A convenience wrapper that use [Flex] for responsive horizontal and
 /// vertical layout switching with padding and spacing.
@@ -25,50 +23,70 @@ enum ResponsiveRowColumnType {
 /// [FlexFit] options.
 class ResponsiveRowColumn extends StatelessWidget {
   final List<ResponsiveRowColumnItem> children;
-  final ResponsiveRowColumnType layout;
-  final MainAxisAlignment rowMainAxisAlignment;
-  final MainAxisSize rowMainAxisSize;
-  final CrossAxisAlignment rowCrossAxisAlignment;
-  final TextDirection? rowTextDirection;
-  final VerticalDirection rowVerticalDirection;
-  final TextBaseline? rowTextBaseline;
-  final MainAxisAlignment columnMainAxisAlignment;
-  final MainAxisSize columnMainAxisSize;
-  final CrossAxisAlignment columnCrossAxisAlignment;
-  final TextDirection? columnTextDirection;
-  final VerticalDirection columnVerticalDirection;
-  final TextBaseline? columnTextBaseline;
-  final double? rowSpacing;
-  final double? columnSpacing;
-  final EdgeInsets rowPadding;
-  final EdgeInsets columnPadding;
-  get isRow => layout == ResponsiveRowColumnType.ROW;
-  get isColumn => layout == ResponsiveRowColumnType.COLUMN;
 
-  const ResponsiveRowColumn(
-      {super.key,
-        this.children = const [],
-        required this.layout,
-        this.rowMainAxisAlignment = MainAxisAlignment.start,
-        this.rowMainAxisSize = MainAxisSize.max,
-        this.rowCrossAxisAlignment = CrossAxisAlignment.center,
-        this.rowTextDirection,
-        this.rowVerticalDirection = VerticalDirection.down,
-        this.rowTextBaseline,
-        this.columnMainAxisAlignment = MainAxisAlignment.start,
-        this.columnMainAxisSize = MainAxisSize.max,
-        this.columnCrossAxisAlignment = CrossAxisAlignment.center,
-        this.columnTextDirection,
-        this.columnVerticalDirection = VerticalDirection.down,
-        this.columnTextBaseline,
-        this.rowSpacing,
-        this.columnSpacing,
-        this.rowPadding = EdgeInsets.zero,
-        this.columnPadding = EdgeInsets.zero});
+  final ResponsiveRowColumnType layout;
+
+  final MainAxisAlignment rowMainAxisAlignment;
+
+  final MainAxisSize rowMainAxisSize;
+
+  final CrossAxisAlignment rowCrossAxisAlignment;
+
+  final TextDirection? rowTextDirection;
+
+  final VerticalDirection rowVerticalDirection;
+
+  final TextBaseline? rowTextBaseline;
+
+  final MainAxisAlignment columnMainAxisAlignment;
+
+  final MainAxisSize columnMainAxisSize;
+
+  final CrossAxisAlignment columnCrossAxisAlignment;
+
+  final TextDirection? columnTextDirection;
+
+  final VerticalDirection columnVerticalDirection;
+
+  final TextBaseline? columnTextBaseline;
+
+  final double? rowSpacing;
+
+  final double? columnSpacing;
+
+  final EdgeInsets rowPadding;
+
+  final EdgeInsets columnPadding;
+
+  get isRow => layout == ResponsiveRowColumnType.row;
+
+  get isColumn => layout == ResponsiveRowColumnType.column;
+
+  const ResponsiveRowColumn({
+    super.key,
+    this.children = const [],
+    required this.layout,
+    this.rowMainAxisAlignment = MainAxisAlignment.start,
+    this.rowMainAxisSize = MainAxisSize.max,
+    this.rowCrossAxisAlignment = CrossAxisAlignment.center,
+    this.rowTextDirection,
+    this.rowVerticalDirection = VerticalDirection.down,
+    this.rowTextBaseline,
+    this.columnMainAxisAlignment = MainAxisAlignment.start,
+    this.columnMainAxisSize = MainAxisSize.max,
+    this.columnCrossAxisAlignment = CrossAxisAlignment.center,
+    this.columnTextDirection,
+    this.columnVerticalDirection = VerticalDirection.down,
+    this.columnTextBaseline,
+    this.rowSpacing,
+    this.columnSpacing,
+    this.rowPadding = EdgeInsets.zero,
+    this.columnPadding = EdgeInsets.zero,
+  });
 
   @override
   Widget build(BuildContext context) {
-    if (layout == ResponsiveRowColumnType.ROW) {
+    if (layout == ResponsiveRowColumnType.row) {
       return Padding(
         padding: rowPadding,
         child: Flex(
@@ -105,7 +123,10 @@ class ResponsiveRowColumn extends StatelessWidget {
 
   /// Logic to construct widget [children].
   List<Widget> buildChildren(
-      List<ResponsiveRowColumnItem> children, bool rowColumn, double? spacing) {
+    List<ResponsiveRowColumnItem> children,
+    bool rowColumn,
+    double? spacing,
+  ) {
     // Sort ResponsiveRowColumnItems by their order.
     List<ResponsiveRowColumnItem> childrenHolder = [];
     childrenHolder.addAll(children);
@@ -116,17 +137,24 @@ class ResponsiveRowColumn extends StatelessWidget {
         return a.columnOrder.compareTo(b.columnOrder);
       }
     });
+
     // Add padding between widgets..
     List<Widget> widgetList = [];
     for (int i = 0; i < childrenHolder.length; i++) {
       widgetList.add(childrenHolder[i].copyWith(rowColumn: rowColumn));
       if (spacing != null && i != childrenHolder.length - 1) {
-        widgetList.add(Padding(
+        widgetList.add(
+          Padding(
             padding: rowColumn
                 ? EdgeInsets.only(right: spacing)
-                : EdgeInsets.only(bottom: spacing)));
+                : EdgeInsets.only(
+                    bottom: spacing,
+                  ),
+          ),
+        );
       }
     }
+
     return widgetList;
   }
 }
@@ -151,25 +179,24 @@ class ResponsiveRowColumnItem extends StatelessWidget {
   final FlexFit? rowFit;
   final FlexFit? columnFit;
 
-  const ResponsiveRowColumnItem(
-      {super.key,
-        required this.child,
-        this.rowOrder = 1073741823,
-        this.columnOrder = 1073741823,
-        this.rowColumn = true,
-        this.rowFlex,
-        this.columnFlex,
-        this.rowFit,
-        this.columnFit});
+  const ResponsiveRowColumnItem({
+    super.key,
+    required this.child,
+    this.rowOrder = 1073741823,
+    this.columnOrder = 1073741823,
+    this.rowColumn = true,
+    this.rowFlex,
+    this.columnFlex,
+    this.rowFit,
+    this.columnFit,
+  });
 
   @override
   Widget build(BuildContext context) {
     if (rowColumn && (rowFlex != null || rowFit != null)) {
-      return Flexible(
-          flex: rowFlex ?? 1, fit: rowFit ?? FlexFit.loose, child: child);
+      return Flexible(flex: rowFlex ?? 1, fit: rowFit ?? FlexFit.loose, child: child);
     } else if (!rowColumn && (columnFlex != null || columnFit != null)) {
-      return Flexible(
-          flex: columnFlex ?? 1, fit: columnFit ?? FlexFit.loose, child: child);
+      return Flexible(flex: columnFlex ?? 1, fit: columnFit ?? FlexFit.loose, child: child);
     }
 
     return child;
