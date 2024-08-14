@@ -13,9 +13,11 @@ class MainSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaxContainer(
-      background: _Background(),
-      child: Column(children: [NavBar(), MainContent()]),
+    return const Stack(
+      children: [
+        _Background(),
+        Column(children: [NavBar(), MaxContainer(child: MainContent())])
+      ],
     );
   }
 }
