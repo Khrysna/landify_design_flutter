@@ -16,6 +16,7 @@ class GetAppSection extends StatelessWidget {
     final breakpoint = ResponsiveBreakpoints.of(context);
 
     return Container(
+      width: double.infinity,
       color: AppColors.secondary600,
       child: MaxContainer(
         child: SizedBox(

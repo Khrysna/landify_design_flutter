@@ -16,6 +16,7 @@ class StoriesSection extends StatelessWidget {
     final breakpoint = ResponsiveBreakpoints.of(context);
 
     return Container(
+      width: double.infinity,
       color: AppColors.secondary100,
       padding: const EdgeInsets.only(top: 64, bottom: 96),
       child: MaxContainer(
