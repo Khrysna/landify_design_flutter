@@ -72,13 +72,7 @@ class _Screenshot extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.sizeOf(context).height;
-    const navbarHeight = Constants.kNavigationBarHeight;
-    const paddingVerticalContent = 72 * 2;
-
-    final screenshotHeight = screenHeight - navbarHeight - paddingVerticalContent;
-
-    return Assets.screenshotMobile1.image(height: screenshotHeight);
+    return Assets.screenshotMobile1.image(height: 560);
   }
 }
 
