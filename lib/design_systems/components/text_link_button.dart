@@ -26,6 +26,10 @@ class TextLinkButton extends StatelessWidget {
                 return AppColors.primary600;
               }
 
+              if (states.contains(WidgetState.pressed)) {
+                return AppColors.primary600;
+              }
+
               return color;
             },
           ),
