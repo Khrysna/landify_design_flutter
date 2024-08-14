@@ -2,41 +2,36 @@ import 'package:flutter/material.dart';
 import 'package:landify_design_flutter/design_systems/components/label_with_description.dart';
 import 'package:landify_design_flutter/design_systems/components/max_container.dart';
 import 'package:landify_design_flutter/design_systems/typography/text_styles.dart';
+import 'package:landify_design_flutter/main.dart';
 import 'package:landify_design_flutter/utils/assets.dart';
-import 'package:landify_design_flutter/utils/breakpoint.dart';
 import 'package:landify_design_flutter/design_systems/colors/colors.dart';
+import 'package:landify_design_flutter/utils/breakpoint_ext.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 class StoriesSection extends StatelessWidget {
   const StoriesSection({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final breakpoint = context.breakpoint;
+    final breakpoint = ResponsiveBreakpoints.of(context);
 
     return Container(
       color: AppColors.secondary100,
       padding: const EdgeInsets.only(top: 64, bottom: 96),
       child: MaxContainer(
-        child: Stack(
-          children: [
-            Assets.quote.image(height: 116),
-            if (breakpoint.responsiveFromLaptop) ...{
-              const Row(
-                children: [
-                  Expanded(child: _LeftSection()),
-                  SizedBox(width: 32),
-                  Expanded(child: _RightSection()),
-                ],
-              ),
-            } else ...{
-              const Column(
-                children: [
-                  _LeftSection(),
-                  SizedBox(width: 32),
-                  _RightSection(),
-                ],
-              )
-            },
+        background: Assets.quote.image(height: 116),
+        child: ResponsiveRowColumn(
+          layout: breakpoint.getRowTypeWhenLargerOrEqualTo(LAPTOP),
+          rowSpacing: 32,
+          children: const [
+            ResponsiveRowColumnItem(
+              rowFit: FlexFit.tight,
+              child: _HeaderWithStories(),
+            ),
+            ResponsiveRowColumnItem(
+              rowFit: FlexFit.tight,
+              child: _Stories(),
+            ),
           ],
         ),
       ),
@@ -44,19 +39,19 @@ class StoriesSection extends StatelessWidget {
   }
 }
 
-class _LeftSection extends StatelessWidget {
-  const _LeftSection();
+class _HeaderWithStories extends StatelessWidget {
+  const _HeaderWithStories();
 
   @override
   Widget build(BuildContext context) {
-    final breakpoint = context.breakpoint;
+    final breakpoint = ResponsiveBreakpoints.of(context);
 
     EdgeInsets padding = const EdgeInsets.only(top: 56, bottom: 32);
     double widthStoryContent = double.infinity;
 
     return LayoutBuilder(
       builder: (context, constraint) {
-        if (breakpoint.responsiveFromLaptop) {
+        if (breakpoint.largerOrEqualTo(LAPTOP)) {
           padding = const EdgeInsets.only(top: 56, left: 104);
           widthStoryContent = constraint.maxWidth * 0.7;
         }
@@ -93,19 +88,19 @@ class _LeftSection extends StatelessWidget {
   }
 }
 
-class _RightSection extends StatelessWidget {
-  const _RightSection();
+class _Stories extends StatelessWidget {
+  const _Stories();
 
   @override
   Widget build(BuildContext context) {
-    final breakpoint = context.breakpoint;
+    final breakpoint = ResponsiveBreakpoints.of(context);
 
     double widthStoryContent1 = double.infinity;
     double widthStoryContent2 = double.infinity;
 
     return LayoutBuilder(
       builder: (context, constraint) {
-        if (breakpoint.responsiveFromLaptop) {
+        if (breakpoint.largerThan(LAPTOP)) {
           widthStoryContent1 = constraint.maxWidth * 0.9;
           widthStoryContent2 = constraint.maxWidth * 0.7;
         }

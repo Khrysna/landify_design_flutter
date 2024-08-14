@@ -3,9 +3,9 @@ import 'package:landify_design_flutter/design_systems/typography/text_styles.dar
 import 'package:landify_design_flutter/design_systems/colors/colors.dart';
 
 class TextLinkButton extends StatelessWidget {
-  const TextLinkButton.light(this.text, {super.key}) : this.color = AppColors.neutral900;
+  const TextLinkButton.light(this.text, {super.key}) : color = AppColors.neutral900;
 
-  const TextLinkButton.dark(this.text, {super.key}) : this.color = Colors.white;
+  const TextLinkButton.dark(this.text, {super.key}) : color = Colors.white;
 
   final String text;
 

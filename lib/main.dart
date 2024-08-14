@@ -9,6 +9,9 @@ import 'package:landify_design_flutter/sections/integrations_section.dart';
 import 'package:landify_design_flutter/sections/main_section.dart';
 import 'package:landify_design_flutter/sections/stories_section.dart';
 import 'package:landify_design_flutter/design_systems/colors/colors.dart';
+import 'package:responsive_framework/responsive_framework.dart';
+
+const String LAPTOP = 'LAPTOP';
 
 void main() {
   runApp(const MyApp());
@@ -21,6 +24,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Landify Design - Flutter',
+      builder: (context, child) => ResponsiveBreakpoints.builder(
+        child: child!,
+        breakpoints: [
+          const Breakpoint(start: 0, end: 640, name: MOBILE),
+          const Breakpoint(start: 641, end: 1024, name: TABLET),
+          const Breakpoint(start: 1025, end: 1280, name: LAPTOP),
+          const Breakpoint(start: 1281, end: 1536, name: DESKTOP),
+        ],
+      ),
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primary600),
         useMaterial3: true,

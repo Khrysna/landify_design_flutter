@@ -1,30 +1,30 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 import 'package:landify_design_flutter/design_systems/components/label_with_description.dart';
 import 'package:landify_design_flutter/design_systems/components/max_container.dart';
 import 'package:landify_design_flutter/design_systems/typography/text_styles.dart';
+import 'package:landify_design_flutter/main.dart';
 import 'package:landify_design_flutter/utils/assets.dart';
-import 'package:landify_design_flutter/utils/breakpoint.dart';
 import 'package:landify_design_flutter/design_systems/colors/colors.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 class FeaturesSection extends StatelessWidget {
   const FeaturesSection({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final breakpoint = context.breakpoint;
-    final features = _Feature.features();
+    final breakpoint = ResponsiveBreakpoints.of(context);
 
+    int featuresLength = 6;
     int columnSizes = 1;
-    int rowSizes = features.length;
+    int rowSizes = featuresLength;
 
-    if (breakpoint.responsiveFromDesktop) {
+    if (breakpoint.largerThan(DESKTOP)) {
       columnSizes = 3;
-      rowSizes = features.length ~/ columnSizes;
-    } else if (breakpoint.responsiveFromLaptop) {
+      rowSizes = featuresLength ~/ columnSizes;
+    } else if (breakpoint.largerThan(LAPTOP)) {
       columnSizes = 2;
-      rowSizes = features.length ~/ columnSizes;
+      rowSizes = featuresLength ~/ columnSizes;
     }
 
     return MaxContainer(
@@ -37,7 +37,7 @@ class FeaturesSection extends StatelessWidget {
                 final fullWidth = constraint.biggest.width;
                 final halfWidth = fullWidth / 1.5;
 
-                final width = breakpoint.responsiveFromLaptop ? halfWidth : fullWidth;
+                final width = breakpoint.largerThan(LAPTOP) ? halfWidth : fullWidth;
 
                 return Container(
                   width: width,
@@ -56,13 +56,38 @@ class FeaturesSection extends StatelessWidget {
               rowSizes: List.generate(rowSizes, (_) => auto),
               columnSizes: List.generate(columnSizes, (_) => auto),
               rowGap: 64,
-              children: features.map((feature) {
-                return _FeatureItem(
-                  title: feature.title,
-                  description: feature.description,
-                  icon: feature.icon,
-                );
-              }).toList(),
+              children: const [
+                _FeatureItem(
+                  title: 'Robust workflow',
+                  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed erat nibh tristique ipsum.',
+                  icon: Assets.robustWorkflow,
+                ),
+                _FeatureItem(
+                  title: 'Flexibility',
+                  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed erat nibh tristique ipsum.',
+                  icon: Assets.flexibility,
+                ),
+                _FeatureItem(
+                  title: 'User friendly',
+                  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed erat nibh tristique ipsum.',
+                  icon: Assets.userFriendly,
+                ),
+                _FeatureItem(
+                  title: 'Multiple layouts',
+                  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed erat nibh tristique ipsum.',
+                  icon: Assets.multipleLayouts,
+                ),
+                _FeatureItem(
+                  title: 'Better components',
+                  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed erat nibh tristique ipsum.',
+                  icon: Assets.betterComponents,
+                ),
+                _FeatureItem(
+                  title: 'Well organised',
+                  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed erat nibh tristique ipsum.',
+                  icon: Assets.wellOrganised,
+                ),
+              ],
             ),
           ],
         ),
@@ -110,59 +135,4 @@ class _FeatureItem extends StatelessWidget {
       ),
     );
   }
-}
-
-class _Feature extends Equatable {
-  const _Feature({
-    required this.title,
-    required this.description,
-    required this.icon,
-  });
-
-  static List<_Feature> features() {
-    const description =
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed erat nibh tristique ipsum.';
-
-    return [
-      const _Feature(
-        title: 'Robust workflow',
-        description: description,
-        icon: Assets.robustWorkflow,
-      ),
-      const _Feature(
-        title: 'Flexibility',
-        description: description,
-        icon: Assets.flexibility,
-      ),
-      const _Feature(
-        title: 'User friendly',
-        description: description,
-        icon: Assets.userFriendly,
-      ),
-      const _Feature(
-        title: 'Multiple layouts',
-        description: description,
-        icon: Assets.multipleLayouts,
-      ),
-      const _Feature(
-        title: 'Better components',
-        description: description,
-        icon: Assets.betterComponents,
-      ),
-      const _Feature(
-        title: 'Well organised',
-        description: description,
-        icon: Assets.wellOrganised,
-      ),
-    ];
-  }
-
-  final String title;
-
-  final String description;
-
-  final AssetGenImage icon;
-
-  @override
-  List<Object?> get props => [title, description, icon];
 }

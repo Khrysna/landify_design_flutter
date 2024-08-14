@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:landify_design_flutter/design_systems/typography/text_styles.dart';
-import 'package:landify_design_flutter/utils/breakpoint.dart';
+import 'package:landify_design_flutter/main.dart';
 import 'package:landify_design_flutter/design_systems/colors/colors.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 enum LabelWithDescriptionAlign { start, center }
+
+enum LabelWithDescriptionType { title, heading, small }
 
 class LabelWithDescription extends StatelessWidget {
   const LabelWithDescription({
@@ -11,6 +14,7 @@ class LabelWithDescription extends StatelessWidget {
     required this.title,
     required this.subtitle,
     this.labelWithDescriptionAlign = LabelWithDescriptionAlign.start,
+    this.labelWithDescriptionType = LabelWithDescriptionType.title,
   });
 
   final String title;
@@ -18,6 +22,8 @@ class LabelWithDescription extends StatelessWidget {
   final String subtitle;
 
   final LabelWithDescriptionAlign labelWithDescriptionAlign;
+
+  final LabelWithDescriptionType labelWithDescriptionType;
 
   CrossAxisAlignment get crossAxisAlignment {
     if (labelWithDescriptionAlign == LabelWithDescriptionAlign.start) {
@@ -35,29 +41,86 @@ class LabelWithDescription extends StatelessWidget {
     return TextAlign.center;
   }
 
+  TextStyle titleStyle(ResponsiveBreakpointsData breakpoint) {
+    TextStyle style;
+
+    switch (labelWithDescriptionType) {
+      case LabelWithDescriptionType.title:
+        if (breakpoint.largerOrEqualTo(LAPTOP)) {
+          style = AppTextStyles.displayLargeBold;
+        } else if (breakpoint.largerOrEqualTo(TABLET)) {
+          style = AppTextStyles.displayMediumBold;
+        } else {
+          style = AppTextStyles.displaySmallBold;
+        }
+      case LabelWithDescriptionType.heading:
+        if (breakpoint.largerOrEqualTo(LAPTOP)) {
+          style = AppTextStyles.displayExtraLargeBold;
+        } else if (breakpoint.largerOrEqualTo(TABLET)) {
+          style = AppTextStyles.displayLargeBold;
+        } else {
+          style = AppTextStyles.displayMediumBold;
+        }
+      case LabelWithDescriptionType.small:
+        if (breakpoint.largerOrEqualTo(LAPTOP)) {
+          style = AppTextStyles.displayMediumBold;
+        } else if (breakpoint.largerOrEqualTo(TABLET)) {
+          style = AppTextStyles.displaySmallBold;
+        } else {
+          style = AppTextStyles.displayExtraSmallBold;
+        }
+    }
+
+    return style;
+  }
+
+  TextStyle subtitleStyle(ResponsiveBreakpointsData breakpoint) {
+    TextStyle style;
+
+    switch (labelWithDescriptionType) {
+      case LabelWithDescriptionType.title:
+        if (breakpoint.largerOrEqualTo(LAPTOP)) {
+          style = AppTextStyles.bodyLargeRegular;
+        } else if (breakpoint.largerOrEqualTo(TABLET)) {
+          style = AppTextStyles.bodyLargeRegular;
+        } else {
+          style = AppTextStyles.bodyMediumRegular;
+        }
+      case LabelWithDescriptionType.heading:
+        style = AppTextStyles.bodyLargeRegular;
+      case LabelWithDescriptionType.small:
+        if (breakpoint.largerOrEqualTo(LAPTOP)) {
+          style = AppTextStyles.bodyMediumRegular;
+        } else if (breakpoint.largerOrEqualTo(TABLET)) {
+          style = AppTextStyles.bodyMediumRegular;
+        } else {
+          style = AppTextStyles.bodySmallRegular;
+        }
+    }
+
+    return style;
+  }
+
   @override
   Widget build(BuildContext context) {
-    final breakpoint = context.breakpoint;
-
-    TextStyle titleStyle = AppTextStyles.displaySmallBold;
-    TextStyle subtitleStyle = AppTextStyles.bodyMediumRegular;
-
-    if (breakpoint.responsiveFromLaptop) {
-      titleStyle = AppTextStyles.displayLargeBold;
-      subtitleStyle = AppTextStyles.bodyLargeRegular;
-    } else if (breakpoint.responsiveFromTablet) {
-      titleStyle = AppTextStyles.displayMediumBold;
-      subtitleStyle = AppTextStyles.bodyLargeRegular;
-    }
+    final breakpoint = ResponsiveBreakpoints.of(context);
 
     return Column(
       crossAxisAlignment: crossAxisAlignment,
       children: [
-        Text(title, style: titleStyle.copyWith(color: AppColors.neutral900), textAlign: textAlign),
-        const SizedBox(height: 8),
+        Text(
+          title,
+          style: titleStyle(breakpoint).copyWith(color: AppColors.neutral900),
+          textAlign: textAlign,
+        ),
+        if (labelWithDescriptionType == LabelWithDescriptionType.heading) ...{
+          const SizedBox(height: 16),
+        } else if (labelWithDescriptionType == LabelWithDescriptionType.title)...{
+          const SizedBox(height: 8),
+        },
         Text(
           subtitle,
-          style: subtitleStyle.copyWith(color: AppColors.neutral900),
+          style: subtitleStyle(breakpoint).copyWith(color: AppColors.neutral900),
           textAlign: textAlign,
         ),
       ],

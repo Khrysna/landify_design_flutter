@@ -2,42 +2,32 @@ import 'package:flutter/material.dart';
 import 'package:landify_design_flutter/design_systems/components/label_with_description.dart';
 import 'package:landify_design_flutter/design_systems/components/max_container.dart';
 import 'package:landify_design_flutter/design_systems/typography/text_styles.dart';
+import 'package:landify_design_flutter/main.dart';
 import 'package:landify_design_flutter/utils/assets.dart';
-import 'package:landify_design_flutter/utils/breakpoint.dart';
 import 'package:landify_design_flutter/design_systems/colors/colors.dart';
+import 'package:landify_design_flutter/utils/breakpoint_ext.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 class GetAppSection extends StatelessWidget {
   const GetAppSection({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final breakpoint = context.breakpoint;
-
-    Widget content = const Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        _Description(),
-        _Screenshots(),
-      ],
-    );
-
-    if (breakpoint.responsiveFromLaptop) {
-      content = const Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Expanded(child: _Description()),
-          SizedBox(width: 32),
-          Expanded(child: _Screenshots()),
-        ],
-      );
-    }
+    final breakpoint = ResponsiveBreakpoints.of(context);
 
     return Container(
       color: AppColors.secondary600,
       child: MaxContainer(
         child: SizedBox(
           width: double.infinity,
-          child: content,
+          child: ResponsiveRowColumn(
+            layout: breakpoint.getRowTypeWhenLargerOrEqualTo(LAPTOP),
+            rowSpacing: 32,
+            children: const [
+              ResponsiveRowColumnItem(rowFit: FlexFit.tight, child: _Description()),
+              ResponsiveRowColumnItem(rowFit: FlexFit.tight, child: _Screenshots()),
+            ],
+          ),
         ),
       ),
     );
@@ -86,16 +76,16 @@ class _Screenshots extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final breakpoint = context.breakpoint;
+    final breakpoint = ResponsiveBreakpoints.of(context);
 
-    if (breakpoint.responsiveFromTablet) {
+    if (breakpoint.largerOrEqualTo(TABLET)) {
       return IntrinsicHeight(
         child: Row(
           children: [
             Expanded(
               child: Align(
                 alignment: Alignment.topCenter,
-                child: Assets.mockup2.image(),
+                child: AspectRatio(aspectRatio: 1, child: Assets.mockup2.image()),
               ),
             ),
             const SizedBox(width: 32),
@@ -104,7 +94,7 @@ class _Screenshots extends StatelessWidget {
                 alignment: Alignment.bottomCenter,
                 child: Padding(
                   padding: const EdgeInsets.only(top: 160),
-                  child: Assets.mockup.image(),
+                  child: AspectRatio(aspectRatio: 1, child: Assets.mockup.image()),
                 ),
               ),
             ),
@@ -113,13 +103,6 @@ class _Screenshots extends StatelessWidget {
       );
     }
 
-    return Center(
-      child: Column(
-        children: [
-          Assets.mockup2.image(),
-          Assets.mockup.image(),
-        ],
-      ),
-    );
+    return Center(child: Column(children: [Assets.mockup2.image(), Assets.mockup.image()]));
   }
 }

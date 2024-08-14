@@ -3,42 +3,32 @@ import 'package:landify_design_flutter/design_systems/components/max_container.d
 import 'package:landify_design_flutter/design_systems/components/text_link_button.dart';
 import 'package:landify_design_flutter/design_systems/typography/text_styles.dart';
 import 'package:landify_design_flutter/utils/assets.dart';
-import 'package:landify_design_flutter/utils/breakpoint.dart';
 import 'package:landify_design_flutter/design_systems/colors/colors.dart';
+import 'package:landify_design_flutter/utils/breakpoint_ext.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 class FooterSection extends StatelessWidget {
   const FooterSection({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final breakpoint = context.breakpoint;
-
-    Widget content = const Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        _Information(),
-        SizedBox(height: 32),
-        _GetApps(),
-      ],
-    );
-
-    if (breakpoint.responsiveFromTablet) {
-      content = const Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Expanded(child: _Information()),
-          SizedBox(width: 32),
-          Expanded(child: _GetApps()),
-        ],
-      );
-    }
+    final breakpoint = ResponsiveBreakpoints.of(context);
 
     return Container(
       color: Colors.black,
       child: MaxContainer(
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 64),
-          child: content,
+          child: ResponsiveRowColumn(
+            layout: breakpoint.getRowTypeWhenLargerOrEqualTo(TABLET),
+            columnCrossAxisAlignment: CrossAxisAlignment.start,
+            rowSpacing: 32,
+            columnSpacing: 32,
+            children: const [
+              ResponsiveRowColumnItem(rowFit: FlexFit.tight, child: _Information()),
+              ResponsiveRowColumnItem(rowFit: FlexFit.tight, child: _GetApps()),
+            ],
+          ),
         ),
       ),
     );
@@ -92,10 +82,10 @@ class _GetApps extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final breakpoint = context.breakpoint;
+    final breakpoint = ResponsiveBreakpoints.of(context);
 
     return Align(
-      alignment: breakpoint.responsiveFromTablet ? Alignment.topRight : Alignment.topLeft,
+      alignment: breakpoint.largerOrEqualTo(TABLET) ? Alignment.topRight : Alignment.topLeft,
       child: Padding(
         padding: const EdgeInsets.only(left: 8),
         child: Column(
