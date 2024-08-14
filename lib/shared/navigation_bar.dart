@@ -22,8 +22,6 @@ class _NavBarState extends State<NavBar> {
 
   final overlayPortalController = OverlayPortalController();
 
-  final _link = LayerLink();
-
   bool get isColorTransparent {
     if (widget.isExceedNavbar) {
       return false;
@@ -64,31 +62,28 @@ class _NavBarState extends State<NavBar> {
 
     return TapRegion(
       groupId: popoverKey,
-      child: CompositedTransformTarget(
-        link: _link,
-        child: OverlayPortal(
-          controller: overlayPortalController,
-          overlayChildBuilder: (context) {
-            return TapRegion(
-              groupId: popoverKey,
-              onTapOutside: (_) => hide(),
-              child: Align(
-                alignment: Alignment.topCenter,
-                child: Container(
-                  margin: const EdgeInsets.only(top: 80),
-                  padding: const EdgeInsets.only(bottom: 24),
-                  color: Colors.white,
-                  width: double.infinity,
-                  child: const _NavbarOverlay(),
-                ),
+      child: OverlayPortal(
+        controller: overlayPortalController,
+        overlayChildBuilder: (context) {
+          return TapRegion(
+            groupId: popoverKey,
+            onTapOutside: (_) => hide(),
+            child: Align(
+              alignment: Alignment.topCenter,
+              child: Container(
+                margin: const EdgeInsets.only(top: 80),
+                padding: const EdgeInsets.only(bottom: 24),
+                color: Colors.white,
+                width: double.infinity,
+                child: const _NavbarOverlay(),
               ),
-            );
-          },
-          child: _Navbar(
-            isShowing: isShowing,
-            isColorTransparent: isColorTransparent,
-            onPressed: toggle,
-          ),
+            ),
+          );
+        },
+        child: _Navbar(
+          isShowing: isShowing,
+          isColorTransparent: isColorTransparent,
+          onPressed: toggle,
         ),
       ),
     );
