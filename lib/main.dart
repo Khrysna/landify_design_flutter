@@ -53,19 +53,19 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const MyHomePage(),
+      home: const LandingPage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+class LandingPage extends StatefulWidget {
+  const LandingPage({super.key});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<LandingPage> createState() => _LandingPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _LandingPageState extends State<LandingPage> {
   final _scrollController = ScrollController();
 
   bool _isExceedNavbar = false;
