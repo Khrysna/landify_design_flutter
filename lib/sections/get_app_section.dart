@@ -85,7 +85,7 @@ class _Screenshots extends StatelessWidget {
             Expanded(
               child: Align(
                 alignment: Alignment.topCenter,
-                child: AspectRatio(aspectRatio: 1, child: Assets.mockup2.image()),
+                child: AspectRatio(aspectRatio: 0.5, child: Assets.mockup2.image()),
               ),
             ),
             const SizedBox(width: 32),
@@ -94,7 +94,7 @@ class _Screenshots extends StatelessWidget {
                 alignment: Alignment.bottomCenter,
                 child: Padding(
                   padding: const EdgeInsets.only(top: 160),
-                  child: AspectRatio(aspectRatio: 1, child: Assets.mockup.image()),
+                  child: AspectRatio(aspectRatio: 0.5, child: Assets.mockup.image()),
                 ),
               ),
             ),
