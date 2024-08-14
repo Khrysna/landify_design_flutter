@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:landify_design_flutter/design_systems/components/max_container.dart';
 import 'package:landify_design_flutter/design_systems/components/responsive_row_column.dart';
 import 'package:landify_design_flutter/design_systems/components/text_link_button.dart';
+import 'package:landify_design_flutter/main_notifier.dart';
 import 'package:landify_design_flutter/utils/breakpoint.dart';
 import 'package:landify_design_flutter/utils/constants.dart';
 import 'package:landify_design_flutter/utils/assets.dart';
+import 'package:landify_design_flutter/utils/provider.dart';
 
 class NavBar extends StatefulWidget {
-  const NavBar({super.key, required this.isExceedNavbar});
-
-  final bool isExceedNavbar;
+  const NavBar({super.key});
 
   @override
   State<NavBar> createState() => _NavBarState();
@@ -22,8 +22,8 @@ class _NavBarState extends State<NavBar> {
 
   final overlayPortalController = OverlayPortalController();
 
-  bool get isColorTransparent {
-    if (widget.isExceedNavbar) {
+  bool isColorTransparent(bool isExceedNavbar) {
+    if (isExceedNavbar) {
       return false;
     }
 
@@ -54,6 +54,7 @@ class _NavBarState extends State<NavBar> {
 
   @override
   Widget build(BuildContext context) {
+    final notifier = Provider.of<MainNotifier>(context);
     final breakpoint = BreakpointProvider.of(context);
 
     if (breakpoint.largerThanTablet) {
@@ -82,7 +83,7 @@ class _NavBarState extends State<NavBar> {
         },
         child: _Navbar(
           isShowing: isShowing,
-          isColorTransparent: isColorTransparent,
+          isColorTransparent: isColorTransparent(notifier.value),
           onPressed: toggle,
         ),
       ),

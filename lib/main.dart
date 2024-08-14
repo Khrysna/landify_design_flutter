@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:landify_design_flutter/main_notifier.dart';
 import 'package:landify_design_flutter/sections/achievements_section.dart';
 import 'package:landify_design_flutter/sections/companies_sections.dart';
 import 'package:landify_design_flutter/design_systems/typography/text_styles.dart';
@@ -12,6 +13,7 @@ import 'package:landify_design_flutter/design_systems/colors/colors.dart';
 import 'package:landify_design_flutter/shared/navigation_bar.dart';
 import 'package:landify_design_flutter/utils/breakpoint.dart';
 import 'package:landify_design_flutter/utils/constants.dart';
+import 'package:landify_design_flutter/utils/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -53,7 +55,10 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const LandingPage(),
+      home: Provider(
+        notifier: MainNotifier(),
+        child: const LandingPage(),
+      ),
     );
   }
 }
@@ -68,18 +73,13 @@ class LandingPage extends StatefulWidget {
 class _LandingPageState extends State<LandingPage> {
   final _scrollController = ScrollController();
 
-  bool _isExceedNavbar = false;
-
   @override
   void initState() {
     super.initState();
 
     _scrollController.addListener(() {
-      final isExceedNavbar = _scrollController.offset > Constants.kNavigationBarHeight;
-
-      if (_isExceedNavbar != isExceedNavbar) {
-        setState(() => _isExceedNavbar = isExceedNavbar);
-      }
+      final notifier = Provider.of<MainNotifier>(context);
+      notifier.onScrollOffsetChanged(_scrollController.offset);
     });
   }
 
@@ -96,9 +96,9 @@ class _LandingPageState extends State<LandingPage> {
       child: Scaffold(
         backgroundColor: Colors.white,
         extendBodyBehindAppBar: true,
-        appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(Constants.kNavigationBarHeight),
-          child: NavBar(isExceedNavbar: _isExceedNavbar),
+        appBar: const PreferredSize(
+          preferredSize: Size.fromHeight(Constants.kNavigationBarHeight),
+          child: NavBar(),
         ),
         body: SingleChildScrollView(
           controller: _scrollController,
