@@ -3,9 +3,7 @@ import 'package:landify_design_flutter/utils/breakpoint.dart';
 import 'package:landify_design_flutter/utils/constants.dart';
 
 class MaxContainer extends StatelessWidget {
-  const MaxContainer({super.key, required this.child, this.background});
-
-  final Widget? background;
+  const MaxContainer({super.key, required this.child});
 
   final Widget child;
 
@@ -18,20 +16,15 @@ class MaxContainer extends StatelessWidget {
       paddingContainer = 0.0;
     }
 
-    return Stack(
-      children: [
-        if (background != null) background!,
-        Align(
-          alignment: Alignment.topCenter,
-          child: Container(
-            constraints: const BoxConstraints(maxWidth: Constants.maxContainer),
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: paddingContainer),
-              child: child,
-            ),
-          ),
+    return Align(
+      alignment: Alignment.topCenter,
+      child: Container(
+        constraints: const BoxConstraints(maxWidth: Constants.maxContainer),
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: paddingContainer),
+          child: child,
         ),
-      ],
+      ),
     );
   }
 }

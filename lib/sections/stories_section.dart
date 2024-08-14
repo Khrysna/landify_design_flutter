@@ -19,18 +19,22 @@ class StoriesSection extends StatelessWidget {
       color: AppColors.secondary100,
       padding: const EdgeInsets.only(top: 64, bottom: 96),
       child: MaxContainer(
-        background: Assets.quote.image(height: 116),
-        child: ResponsiveRowColumn(
-          layout: breakpoint.getRowTypeWhenLargerOrEqualTo(Breakpoint.laptop),
-          rowSpacing: 32,
-          children: const [
-            ResponsiveRowColumnItem(
-              rowFit: FlexFit.tight,
-              child: _HeaderWithStories(),
-            ),
-            ResponsiveRowColumnItem(
-              rowFit: FlexFit.tight,
-              child: _Stories(),
+        child: Stack(
+          children: [
+            Assets.quote.image(height: 116),
+            ResponsiveRowColumn(
+              layout: breakpoint.getRowTypeWhenLargerOrEqualTo(Breakpoint.laptop),
+              rowSpacing: 32,
+              children: const [
+                ResponsiveRowColumnItem(
+                  rowFit: FlexFit.tight,
+                  child: _HeaderWithStories(),
+                ),
+                ResponsiveRowColumnItem(
+                  rowFit: FlexFit.tight,
+                  child: _Stories(),
+                ),
+              ],
             ),
           ],
         ),
