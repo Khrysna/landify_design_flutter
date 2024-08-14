@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:landify_design_flutter/design_systems/components/label_with_description.dart';
-import 'package:landify_design_flutter/main.dart';
+import 'package:landify_design_flutter/design_systems/components/responsive_row_column.dart';
 import 'package:landify_design_flutter/design_systems/components/max_container.dart';
+import 'package:landify_design_flutter/utils/breakpoint.dart';
 import 'package:landify_design_flutter/utils/constants.dart';
 import 'package:landify_design_flutter/utils/assets.dart';
-import 'package:landify_design_flutter/utils/breakpoint_ext.dart';
-import 'package:responsive_framework/responsive_framework.dart';
 
 class MainSection extends StatelessWidget {
   const MainSection({super.key});
@@ -37,12 +36,12 @@ class MainContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final breakpoint = ResponsiveBreakpoints.of(context);
+    final breakpoint = BreakpointProvider.of(context);
 
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 72),
+      padding: const EdgeInsets.symmetric(vertical: 72 + (Constants.kNavigationBarHeight / 2)),
       child: ResponsiveRowColumn(
-        layout: breakpoint.getRowTypeWhenLargerOrEqualTo(LAPTOP),
+        layout: breakpoint.getRowTypeWhenLargerOrEqualTo(Breakpoint.laptop),
         columnSpacing: 72,
         children: const [
           ResponsiveRowColumnItem(
@@ -88,13 +87,13 @@ class _InstructionButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final breakpoint = ResponsiveBreakpoints.of(context);
-    final isMobile = breakpoint.equals(MOBILE);
+    final breakpoint = BreakpointProvider.of(context);
+    final isMobile = breakpoint.equals(Breakpoint.mobile);
 
     return ResponsiveRowColumn(
       rowSpacing: 16,
       columnSpacing: 8,
-      layout: breakpoint.getRowTypeWhenLargerOrEqualTo(TABLET),
+      layout: breakpoint.getRowTypeWhenLargerOrEqualTo(Breakpoint.tablet),
       children: [
         ResponsiveRowColumnItem(
           child: SizedBox(

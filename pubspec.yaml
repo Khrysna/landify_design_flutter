@@ -9,10 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.8
-  font_awesome_flutter: ^10.7.0
   flutter_layout_grid: ^2.0.7
-  responsive_framework: ^1.4.0
 
 dev_dependencies:
   flutter_test:

@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:landify_design_flutter/design_systems/components/label_with_description.dart';
 import 'package:landify_design_flutter/design_systems/components/max_container.dart';
+import 'package:landify_design_flutter/design_systems/components/responsive_row_column.dart';
 import 'package:landify_design_flutter/design_systems/typography/text_styles.dart';
-import 'package:landify_design_flutter/main.dart';
 import 'package:landify_design_flutter/utils/assets.dart';
 import 'package:landify_design_flutter/design_systems/colors/colors.dart';
-import 'package:landify_design_flutter/utils/breakpoint_ext.dart';
-import 'package:responsive_framework/responsive_framework.dart';
+import 'package:landify_design_flutter/utils/breakpoint.dart';
 
 class GetAppSection extends StatelessWidget {
   const GetAppSection({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final breakpoint = ResponsiveBreakpoints.of(context);
+    final breakpoint = BreakpointProvider.of(context);
 
     return Container(
       width: double.infinity,
@@ -22,7 +21,7 @@ class GetAppSection extends StatelessWidget {
         child: SizedBox(
           width: double.infinity,
           child: ResponsiveRowColumn(
-            layout: breakpoint.getRowTypeWhenLargerOrEqualTo(LAPTOP),
+            layout: breakpoint.getRowTypeWhenLargerOrEqualTo(Breakpoint.laptop),
             rowSpacing: 32,
             children: const [
               ResponsiveRowColumnItem(rowFit: FlexFit.tight, child: _Description()),
@@ -77,9 +76,9 @@ class _Screenshots extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final breakpoint = ResponsiveBreakpoints.of(context);
+    final breakpoint = BreakpointProvider.of(context);
 
-    if (breakpoint.largerOrEqualTo(TABLET)) {
+    if (breakpoint.largerOrEqualToTablet) {
       return IntrinsicHeight(
         child: Row(
           children: [

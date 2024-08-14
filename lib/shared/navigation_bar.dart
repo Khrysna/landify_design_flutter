@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:landify_design_flutter/design_systems/components/max_container.dart';
+import 'package:landify_design_flutter/design_systems/components/responsive_row_column.dart';
 import 'package:landify_design_flutter/design_systems/components/text_link_button.dart';
-import 'package:landify_design_flutter/main.dart';
-import 'package:landify_design_flutter/utils/breakpoint_ext.dart';
+import 'package:landify_design_flutter/utils/breakpoint.dart';
 import 'package:landify_design_flutter/utils/constants.dart';
 import 'package:landify_design_flutter/utils/assets.dart';
-import 'package:responsive_framework/responsive_framework.dart';
 
 class NavBar extends StatefulWidget {
   const NavBar({super.key, required this.isExceedNavbar});
@@ -57,9 +56,9 @@ class _NavBarState extends State<NavBar> {
 
   @override
   Widget build(BuildContext context) {
-    final breakpoint = ResponsiveBreakpoints.of(context);
+    final breakpoint = BreakpointProvider.of(context);
 
-    if (breakpoint.largerThan(TABLET)) {
+    if (breakpoint.largerThanTablet) {
       hide();
     }
 
@@ -101,8 +100,8 @@ class _NavbarOverlay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final breakpoint = ResponsiveBreakpoints.of(context);
-    final showStores = breakpoint.equals(MOBILE);
+    final breakpoint = BreakpointProvider.of(context);
+    final showStores = breakpoint.equals(Breakpoint.mobile);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -132,11 +131,11 @@ class _Navbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final breakpoint = ResponsiveBreakpoints.of(context);
+    final breakpoint = BreakpointProvider.of(context);
 
-    final showNavigation = breakpoint.largerOrEqualTo(LAPTOP);
-    final showStoreLogo = breakpoint.largerOrEqualTo(TABLET);
-    final showBarsIcon = breakpoint.smallerOrEqualTo(TABLET);
+    final showNavigation = breakpoint.largerThanLaptop;
+    final showStoreLogo = breakpoint.largerOrEqualToTablet;
+    final showBarsIcon = breakpoint.smallerOrEqualToTablet;
 
     return ColoredBox(
       color: isColorTransparent ? Colors.transparent : Colors.white,
@@ -178,11 +177,11 @@ class _Navigation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const navigation = ['Features', 'Pricing', 'Careers', 'Help'];
-    final breakpoint = ResponsiveBreakpoints.of(context);
+    final breakpoint = BreakpointProvider.of(context);
 
     EdgeInsets padding = const EdgeInsets.symmetric(horizontal: Constants.paddingContainer - 12);
 
-    if (breakpoint.largerOrEqualTo(LAPTOP)) {
+    if (breakpoint.largerOrEqualToLaptop) {
       padding = EdgeInsets.zero;
     }
 
@@ -191,7 +190,7 @@ class _Navigation extends StatelessWidget {
       child: ResponsiveRowColumn(
         columnMainAxisSize: MainAxisSize.min,
         columnCrossAxisAlignment: CrossAxisAlignment.start,
-        layout: breakpoint.getRowTypeWhenLargerOrEqualTo(LAPTOP),
+        layout: breakpoint.getRowTypeWhenLargerOrEqualTo(Breakpoint.laptop),
         children: [
           ...List.generate(
             navigation.length,

@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:landify_design_flutter/design_systems/components/label_with_description.dart';
 import 'package:landify_design_flutter/design_systems/components/max_container.dart';
+import 'package:landify_design_flutter/design_systems/components/responsive_row_column.dart';
 import 'package:landify_design_flutter/design_systems/typography/text_styles.dart';
-import 'package:landify_design_flutter/main.dart';
 import 'package:landify_design_flutter/utils/assets.dart';
 import 'package:landify_design_flutter/design_systems/colors/colors.dart';
-import 'package:landify_design_flutter/utils/breakpoint_ext.dart';
-import 'package:responsive_framework/responsive_framework.dart';
+import 'package:landify_design_flutter/utils/breakpoint.dart';
 
 class StoriesSection extends StatelessWidget {
   const StoriesSection({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final breakpoint = ResponsiveBreakpoints.of(context);
+    final breakpoint = BreakpointProvider.of(context);
 
     return Container(
       width: double.infinity,
@@ -22,7 +21,7 @@ class StoriesSection extends StatelessWidget {
       child: MaxContainer(
         background: Assets.quote.image(height: 116),
         child: ResponsiveRowColumn(
-          layout: breakpoint.getRowTypeWhenLargerOrEqualTo(LAPTOP),
+          layout: breakpoint.getRowTypeWhenLargerOrEqualTo(Breakpoint.laptop),
           rowSpacing: 32,
           children: const [
             ResponsiveRowColumnItem(
@@ -45,14 +44,14 @@ class _HeaderWithStories extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final breakpoint = ResponsiveBreakpoints.of(context);
+    final breakpoint = BreakpointProvider.of(context);
 
     EdgeInsets padding = const EdgeInsets.only(top: 56, bottom: 32);
     double widthStoryContent = double.infinity;
 
     return LayoutBuilder(
       builder: (context, constraint) {
-        if (breakpoint.largerOrEqualTo(LAPTOP)) {
+        if (breakpoint.largerOrEqualTo(Breakpoint.laptop)) {
           padding = const EdgeInsets.only(top: 56, left: 104);
           widthStoryContent = constraint.maxWidth * 0.7;
         }
@@ -94,14 +93,14 @@ class _Stories extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final breakpoint = ResponsiveBreakpoints.of(context);
+    final breakpoint = BreakpointProvider.of(context);
 
     double widthStoryContent1 = double.infinity;
     double widthStoryContent2 = double.infinity;
 
     return LayoutBuilder(
       builder: (context, constraint) {
-        if (breakpoint.largerThan(LAPTOP)) {
+        if (breakpoint.equals(Breakpoint.desktop)) {
           widthStoryContent1 = constraint.maxWidth * 0.9;
           widthStoryContent2 = constraint.maxWidth * 0.7;
         }

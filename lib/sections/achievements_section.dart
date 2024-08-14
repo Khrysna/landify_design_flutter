@@ -2,23 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 import 'package:landify_design_flutter/design_systems/components/label_with_description.dart';
 import 'package:landify_design_flutter/design_systems/components/max_container.dart';
-import 'package:landify_design_flutter/main.dart';
+import 'package:landify_design_flutter/design_systems/components/responsive_row_column.dart';
 import 'package:landify_design_flutter/utils/assets.dart';
-import 'package:landify_design_flutter/utils/breakpoint_ext.dart';
-import 'package:responsive_framework/responsive_framework.dart';
+import 'package:landify_design_flutter/utils/breakpoint.dart';
 
 class AchievementsSection extends StatelessWidget {
   const AchievementsSection({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final breakpoint = ResponsiveBreakpoints.of(context);
+    final breakpoint = BreakpointProvider.of(context);
 
     return MaxContainer(
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 80),
         child: ResponsiveRowColumn(
-          layout: breakpoint.getRowTypeWhenLargerOrEqualTo(LAPTOP),
+          layout: breakpoint.getRowTypeWhenLargerOrEqualTo(Breakpoint.laptop),
           rowSpacing: 32,
           columnSpacing: 48,
           columnCrossAxisAlignment: CrossAxisAlignment.start,
@@ -49,12 +48,12 @@ class _Achievements extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final breakpoint = ResponsiveBreakpoints.of(context);
+    final breakpoint = BreakpointProvider.of(context);
 
     int rowSizes = 4;
     int columnSizes = 1;
 
-    if (breakpoint.largerOrEqualTo(TABLET)) {
+    if (breakpoint.largerOrEqualToLaptop) {
       rowSizes = 2;
       columnSizes = 2;
     }

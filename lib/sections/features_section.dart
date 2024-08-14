@@ -3,26 +3,25 @@ import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 import 'package:landify_design_flutter/design_systems/components/label_with_description.dart';
 import 'package:landify_design_flutter/design_systems/components/max_container.dart';
 import 'package:landify_design_flutter/design_systems/typography/text_styles.dart';
-import 'package:landify_design_flutter/main.dart';
 import 'package:landify_design_flutter/utils/assets.dart';
 import 'package:landify_design_flutter/design_systems/colors/colors.dart';
-import 'package:responsive_framework/responsive_framework.dart';
+import 'package:landify_design_flutter/utils/breakpoint.dart';
 
 class FeaturesSection extends StatelessWidget {
   const FeaturesSection({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final breakpoint = ResponsiveBreakpoints.of(context);
+    final breakpoint = BreakpointProvider.of(context);
 
     int featuresLength = 6;
     int columnSizes = 1;
     int rowSizes = featuresLength;
 
-    if (breakpoint.largerThan(DESKTOP)) {
+    if (breakpoint.equals(Breakpoint.desktop)) {
       columnSizes = 3;
       rowSizes = featuresLength ~/ columnSizes;
-    } else if (breakpoint.largerThan(LAPTOP)) {
+    } else if (breakpoint.largerThanLaptop) {
       columnSizes = 2;
       rowSizes = featuresLength ~/ columnSizes;
     }
@@ -37,7 +36,7 @@ class FeaturesSection extends StatelessWidget {
                 final fullWidth = constraint.biggest.width;
                 final halfWidth = fullWidth / 1.5;
 
-                final width = breakpoint.largerThan(LAPTOP) ? halfWidth : fullWidth;
+                final width = breakpoint.largerOrEqualToLaptop ? halfWidth : fullWidth;
 
                 return Container(
                   width: width,

@@ -10,10 +10,8 @@ import 'package:landify_design_flutter/sections/main_section.dart';
 import 'package:landify_design_flutter/sections/stories_section.dart';
 import 'package:landify_design_flutter/design_systems/colors/colors.dart';
 import 'package:landify_design_flutter/shared/navigation_bar.dart';
+import 'package:landify_design_flutter/utils/breakpoint.dart';
 import 'package:landify_design_flutter/utils/constants.dart';
-import 'package:responsive_framework/responsive_framework.dart';
-
-const String LAPTOP = 'LAPTOP';
 
 void main() {
   runApp(const MyApp());
@@ -26,35 +24,35 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Landify Design - Flutter',
-      builder: (context, child) => ResponsiveBreakpoints.builder(
-        child: child!,
-        breakpoints: [
-          const Breakpoint(start: 0, end: 640, name: MOBILE),
-          const Breakpoint(start: 641, end: 1024, name: TABLET),
-          const Breakpoint(start: 1025, end: 1280, name: LAPTOP),
-          const Breakpoint(start: 1281, end: 1536, name: DESKTOP),
-        ],
+      builder: (context, child) => LayoutBuilder(
+        builder: (context, constraint) {
+          return BreakpointProvider(
+            breakpoint: Breakpoint.get(constraint.maxWidth),
+            child: child!,
+          );
+        },
       ),
       theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primary600),
-          useMaterial3: true,
-          filledButtonTheme: FilledButtonThemeData(
-            style: FilledButton.styleFrom(
-              backgroundColor: AppColors.primary600,
-              minimumSize: const Size(0, 56),
-              textStyle: AppTextStyles.bodyMediumSemiBold,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-              foregroundColor: Colors.white,
-            ),
+        colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primary600),
+        useMaterial3: true,
+        filledButtonTheme: FilledButtonThemeData(
+          style: FilledButton.styleFrom(
+            backgroundColor: AppColors.primary600,
+            minimumSize: const Size(0, 56),
+            textStyle: AppTextStyles.bodyMediumSemiBold,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+            foregroundColor: Colors.white,
           ),
-          textButtonTheme: TextButtonThemeData(
-            style: TextButton.styleFrom(
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-              minimumSize: const Size(0, 56),
-              textStyle: AppTextStyles.bodyMediumSemiBold,
-              foregroundColor: AppColors.primary600,
-            ),
-          )),
+        ),
+        textButtonTheme: TextButtonThemeData(
+          style: TextButton.styleFrom(
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+            minimumSize: const Size(0, 56),
+            textStyle: AppTextStyles.bodyMediumSemiBold,
+            foregroundColor: AppColors.primary600,
+          ),
+        ),
+      ),
       home: const MyHomePage(),
     );
   }

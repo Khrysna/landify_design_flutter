@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:landify_design_flutter/design_systems/components/max_container.dart';
+import 'package:landify_design_flutter/design_systems/components/responsive_row_column.dart';
 import 'package:landify_design_flutter/design_systems/components/text_link_button.dart';
 import 'package:landify_design_flutter/design_systems/typography/text_styles.dart';
 import 'package:landify_design_flutter/utils/assets.dart';
 import 'package:landify_design_flutter/design_systems/colors/colors.dart';
-import 'package:landify_design_flutter/utils/breakpoint_ext.dart';
-import 'package:responsive_framework/responsive_framework.dart';
+import 'package:landify_design_flutter/utils/breakpoint.dart';
 
 class FooterSection extends StatelessWidget {
   const FooterSection({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final breakpoint = ResponsiveBreakpoints.of(context);
+    final breakpoint = BreakpointProvider.of(context);
 
     return Container(
       color: Colors.black,
@@ -21,7 +21,7 @@ class FooterSection extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 64),
           child: ResponsiveRowColumn(
-            layout: breakpoint.getRowTypeWhenLargerOrEqualTo(TABLET),
+            layout: breakpoint.getRowTypeWhenLargerOrEqualTo(Breakpoint.tablet),
             columnCrossAxisAlignment: CrossAxisAlignment.start,
             rowSpacing: 32,
             columnSpacing: 32,
@@ -83,10 +83,10 @@ class _GetApps extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final breakpoint = ResponsiveBreakpoints.of(context);
+    final breakpoint = BreakpointProvider.of(context);
 
     return Align(
-      alignment: breakpoint.largerOrEqualTo(TABLET) ? Alignment.topRight : Alignment.topLeft,
+      alignment: breakpoint.largerOrEqualToTablet ? Alignment.topRight : Alignment.topLeft,
       child: Padding(
         padding: const EdgeInsets.only(left: 8),
         child: Column(

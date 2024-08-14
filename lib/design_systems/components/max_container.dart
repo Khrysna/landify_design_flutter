@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:landify_design_flutter/utils/breakpoint.dart';
 import 'package:landify_design_flutter/utils/constants.dart';
-import 'package:responsive_framework/responsive_framework.dart';
 
 class MaxContainer extends StatelessWidget {
   const MaxContainer({super.key, required this.child, this.background});
@@ -11,20 +11,27 @@ class MaxContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final breakpoint = ResponsiveBreakpoints.of(context);
+    final breakpoint = BreakpointProvider.of(context);
     double paddingContainer = Constants.paddingContainer;
 
-    if (breakpoint.largerThan(DESKTOP)) {
+    if (breakpoint.equals(Breakpoint.desktop)) {
       paddingContainer = 0.0;
     }
 
-    return MaxWidthBox(
-      background: background,
-      maxWidth: Constants.maxContainer,
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: paddingContainer),
-        child: child,
-      ),
+    return Stack(
+      children: [
+        if (background != null) background!,
+        Align(
+          alignment: Alignment.topCenter,
+          child: Container(
+            constraints: const BoxConstraints(maxWidth: Constants.maxContainer),
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: paddingContainer),
+              child: child,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
