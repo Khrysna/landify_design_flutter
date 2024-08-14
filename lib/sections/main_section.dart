@@ -4,7 +4,6 @@ import 'package:landify_design_flutter/main.dart';
 import 'package:landify_design_flutter/design_systems/components/max_container.dart';
 import 'package:landify_design_flutter/utils/constants.dart';
 import 'package:landify_design_flutter/utils/assets.dart';
-import 'package:landify_design_flutter/shared/navigation_bar.dart';
 import 'package:landify_design_flutter/utils/breakpoint_ext.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
@@ -16,7 +15,7 @@ class MainSection extends StatelessWidget {
     return const Stack(
       children: [
         _Background(),
-        Column(children: [NavBar(), MaxContainer(child: MainContent())])
+        MaxContainer(child: MainContent()),
       ],
     );
   }

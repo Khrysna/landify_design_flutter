@@ -9,6 +9,8 @@ import 'package:landify_design_flutter/sections/integrations_section.dart';
 import 'package:landify_design_flutter/sections/main_section.dart';
 import 'package:landify_design_flutter/sections/stories_section.dart';
 import 'package:landify_design_flutter/design_systems/colors/colors.dart';
+import 'package:landify_design_flutter/shared/navigation_bar.dart';
+import 'package:landify_design_flutter/utils/constants.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 const String LAPTOP = 'LAPTOP';
@@ -34,26 +36,25 @@ class MyApp extends StatelessWidget {
         ],
       ),
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primary600),
-        useMaterial3: true,
-        filledButtonTheme: FilledButtonThemeData(
-          style: FilledButton.styleFrom(
-            backgroundColor: AppColors.primary600,
-            minimumSize:  const Size(0, 56),
-            textStyle: AppTextStyles.bodyMediumSemiBold,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-            foregroundColor: Colors.white,
+          colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primary600),
+          useMaterial3: true,
+          filledButtonTheme: FilledButtonThemeData(
+            style: FilledButton.styleFrom(
+              backgroundColor: AppColors.primary600,
+              minimumSize: const Size(0, 56),
+              textStyle: AppTextStyles.bodyMediumSemiBold,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+              foregroundColor: Colors.white,
+            ),
           ),
-        ),
-        textButtonTheme: TextButtonThemeData(
-          style: TextButton.styleFrom(
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-            minimumSize: const Size(0, 56),
-            textStyle: AppTextStyles.bodyMediumSemiBold,
-            foregroundColor: AppColors.primary600,
-          ),
-        )
-      ),
+          textButtonTheme: TextButtonThemeData(
+            style: TextButton.styleFrom(
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+              minimumSize: const Size(0, 56),
+              textStyle: AppTextStyles.bodyMediumSemiBold,
+              foregroundColor: AppColors.primary600,
+            ),
+          )),
       home: const MyHomePage(),
     );
   }
@@ -67,13 +68,43 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final _scrollController = ScrollController();
+
+  bool _isExceedNavbar = false;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _scrollController.addListener(() {
+      final isExceedNavbar = _scrollController.offset > Constants.kNavigationBarHeight;
+
+      if (_isExceedNavbar != isExceedNavbar) {
+        setState(() => _isExceedNavbar = isExceedNavbar);
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return const SelectionArea(
+    return SelectionArea(
       child: Scaffold(
         backgroundColor: Colors.white,
+        extendBodyBehindAppBar: true,
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(Constants.kNavigationBarHeight),
+          child: NavBar(isExceedNavbar: _isExceedNavbar),
+        ),
         body: SingleChildScrollView(
-          child: Column(
+          controller: _scrollController,
+          child: const Column(
             children: [
               MainSection(),
               CompaniesSections(),

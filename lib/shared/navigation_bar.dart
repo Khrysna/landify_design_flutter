@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:landify_design_flutter/design_systems/components/max_container.dart';
 import 'package:landify_design_flutter/design_systems/components/text_link_button.dart';
 import 'package:landify_design_flutter/main.dart';
-import 'package:landify_design_flutter/sections/achievements_section.dart';
 import 'package:landify_design_flutter/utils/breakpoint_ext.dart';
 import 'package:landify_design_flutter/utils/constants.dart';
 import 'package:landify_design_flutter/utils/assets.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 class NavBar extends StatefulWidget {
-  const NavBar({super.key});
+  const NavBar({super.key, required this.isExceedNavbar});
+
+  final bool isExceedNavbar;
 
   @override
   State<NavBar> createState() => _NavBarState();
@@ -25,6 +24,14 @@ class _NavBarState extends State<NavBar> {
   final overlayPortalController = OverlayPortalController();
 
   final _link = LayerLink();
+
+  bool get isColorTransparent {
+    if (widget.isExceedNavbar) {
+      return false;
+    }
+
+    return !isShowing;
+  }
 
   void toggle() {
     overlayPortalController.toggle();
@@ -78,7 +85,11 @@ class _NavBarState extends State<NavBar> {
               ),
             );
           },
-          child: _Navbar(isShowing: isShowing, onPressed: toggle),
+          child: _Navbar(
+            isShowing: isShowing,
+            isColorTransparent: isColorTransparent,
+            onPressed: toggle,
+          ),
         ),
       ),
     );
@@ -107,9 +118,15 @@ class _NavbarOverlay extends StatelessWidget {
 }
 
 class _Navbar extends StatelessWidget {
-  const _Navbar({required this.isShowing, required this.onPressed});
+  const _Navbar({
+    required this.isShowing,
+    required this.isColorTransparent,
+    required this.onPressed,
+  });
 
   final bool isShowing;
+
+  final bool isColorTransparent;
 
   final GestureTapCallback onPressed;
 
@@ -122,7 +139,7 @@ class _Navbar extends StatelessWidget {
     final showBarsIcon = breakpoint.smallerOrEqualTo(TABLET);
 
     return ColoredBox(
-      color: isShowing ? Colors.white : Colors.transparent,
+      color: isColorTransparent ? Colors.transparent : Colors.white,
       child: MaxContainer(
         child: SizedBox(
           height: Constants.kNavigationBarHeight,
