@@ -38,7 +38,7 @@ This project is based on the [Landify - Landing Page UI Kit v2](<https://www.fig
 
 ## ✨ Acknowledgments
 
-- Thanks to the Figma community for providing the Landify UI Kit.
+Thanks to the Figma community for providing the Landify UI Kit.
 
 ---
 
