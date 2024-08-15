@@ -14,7 +14,7 @@ You can access the live demo [here](https://landify-design-flutter.vercel.app).
 
 Below is a Video demonstrating the responsive design of the Landify Landing Page, built with Flutter. The site seamlessly adapts to different screen sizes, ensuring a smooth and consistent user experience across desktop, tablet, and mobile devices.
 
-![Responsive Demo GIF](./screenshots/demo.mov)
+![Responsive Demo](./screenshots/demo.mp4)
 
 This showcases the flexibility and power of Flutter web in creating adaptive web applications.
 
