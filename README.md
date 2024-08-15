@@ -18,7 +18,7 @@ This project is based on the [Landify - Landing Page UI Kit v2](<https://www.fig
 
 Below is a Video demonstrating the responsive design of the Landify Landing Page, built with Flutter. The site seamlessly adapts to different screen sizes, ensuring a smooth and consistent user experience across desktop, tablet, and mobile devices.
 
-![Responsive Demo](./screenshots/demo.mov)
+![Demo](./screenshots/demo.gif)
 
 This showcases the flexibility and power of Flutter web in creating adaptive web applications.
 
