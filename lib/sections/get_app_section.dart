@@ -88,7 +88,7 @@ class _Screenshots extends StatelessWidget {
             Expanded(
               child: Align(
                 alignment: Alignment.topCenter,
-                child: AspectRatio(aspectRatio: 0.5, child: ScreenshotMobile3()),
+                child: ScreenshotMobile3(),
               ),
             ),
             SizedBox(width: 32),
@@ -97,7 +97,7 @@ class _Screenshots extends StatelessWidget {
                 alignment: Alignment.bottomCenter,
                 child: Padding(
                   padding: EdgeInsets.only(top: 160),
-                  child: AspectRatio(aspectRatio: 0.5, child: ScreenshotMobile2()),
+                  child: ScreenshotMobile2(),
                 ),
               ),
             ),
