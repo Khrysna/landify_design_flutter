@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:landify_design_flutter/design_systems/components/assets/app_store_image.dart';
+import 'package:landify_design_flutter/design_systems/components/assets/google_play_image.dart';
+import 'package:landify_design_flutter/design_systems/components/assets/screenshot_mobile_2.dart';
+import 'package:landify_design_flutter/design_systems/components/assets/screenshot_mobile_3.dart';
 import 'package:landify_design_flutter/design_systems/components/label_with_description.dart';
 import 'package:landify_design_flutter/design_systems/components/max_container.dart';
 import 'package:landify_design_flutter/design_systems/components/responsive_row_column.dart';
 import 'package:landify_design_flutter/design_systems/typography/text_styles.dart';
-import 'package:landify_design_flutter/utils/assets.dart';
 import 'package:landify_design_flutter/design_systems/colors/colors.dart';
 import 'package:landify_design_flutter/utils/breakpoint.dart';
 
@@ -58,11 +61,11 @@ class _Description extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 8),
-          Row(
+          const Row(
             children: [
-              Assets.googlePlay.image(height: 40),
-              const SizedBox(width: 12),
-              Assets.appStore.image(height: 40),
+              GooglePlayImage(),
+              SizedBox(width: 12),
+              AppStoreImage(),
             ],
           ),
         ],
@@ -79,22 +82,22 @@ class _Screenshots extends StatelessWidget {
     final breakpoint = BreakpointProvider.of(context);
 
     if (breakpoint.largerOrEqualToTablet) {
-      return IntrinsicHeight(
+      return const IntrinsicHeight(
         child: Row(
           children: [
             Expanded(
               child: Align(
                 alignment: Alignment.topCenter,
-                child: AspectRatio(aspectRatio: 0.5, child: Assets.mockup2.image()),
+                child: AspectRatio(aspectRatio: 0.5, child: ScreenshotMobile3()),
               ),
             ),
-            const SizedBox(width: 32),
+            SizedBox(width: 32),
             Expanded(
               child: Align(
                 alignment: Alignment.bottomCenter,
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 160),
-                  child: AspectRatio(aspectRatio: 0.5, child: Assets.mockup.image()),
+                  padding: EdgeInsets.only(top: 160),
+                  child: AspectRatio(aspectRatio: 0.5, child: ScreenshotMobile2()),
                 ),
               ),
             ),
@@ -103,6 +106,6 @@ class _Screenshots extends StatelessWidget {
       );
     }
 
-    return Center(child: Column(children: [Assets.mockup2.image(), Assets.mockup.image()]));
+    return const Center(child: Column(children: [ScreenshotMobile3(), ScreenshotMobile2()]));
   }
 }

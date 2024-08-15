@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:landify_design_flutter/design_systems/components/assets/integrations_image.dart';
 import 'package:landify_design_flutter/design_systems/components/label_with_description.dart';
 import 'package:landify_design_flutter/design_systems/components/max_container.dart';
 import 'package:landify_design_flutter/design_systems/components/responsive_row_column.dart';
-import 'package:landify_design_flutter/utils/assets.dart';
 import 'package:landify_design_flutter/utils/breakpoint.dart';
 
 class IntegrationsSection extends StatelessWidget {
@@ -38,7 +38,7 @@ class IntegrationsSection extends StatelessWidget {
               rowFlex: 6,
               child: AspectRatio(
                 aspectRatio: aspectRatio,
-                child: Assets.integrations.image(),
+                child: const IntegrationsImage(),
               ),
             ),
           ],

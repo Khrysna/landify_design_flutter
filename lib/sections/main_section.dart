@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:landify_design_flutter/design_systems/components/assets/landing_main_background.dart';
+import 'package:landify_design_flutter/design_systems/components/assets/screenshot_mobile_1.dart';
 import 'package:landify_design_flutter/design_systems/components/label_with_description.dart';
 import 'package:landify_design_flutter/design_systems/components/responsive_row_column.dart';
 import 'package:landify_design_flutter/design_systems/components/max_container.dart';
 import 'package:landify_design_flutter/utils/breakpoint.dart';
 import 'package:landify_design_flutter/utils/constants.dart';
-import 'package:landify_design_flutter/utils/assets.dart';
 
 class MainSection extends StatelessWidget {
   const MainSection({super.key});
@@ -13,21 +14,10 @@ class MainSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Stack(
       children: [
-        _Background(),
+        LandingMainBackground(),
         MaxContainer(child: MainContent()),
       ],
     );
-  }
-}
-
-class _Background extends StatelessWidget {
-  const _Background();
-
-  @override
-  Widget build(BuildContext context) {
-    final height = MediaQuery.sizeOf(context).height;
-
-    return Assets.mainBackground.image(width: double.infinity, fit: BoxFit.fill, height: height);
   }
 }
 
@@ -60,19 +50,10 @@ class MainContent extends StatelessWidget {
               ],
             ),
           ),
-          ResponsiveRowColumnItem(rowFit: FlexFit.tight, child: _Screenshot()),
+          ResponsiveRowColumnItem(rowFit: FlexFit.tight, child: ScreenshotMobile1()),
         ],
       ),
     );
-  }
-}
-
-class _Screenshot extends StatelessWidget {
-  const _Screenshot();
-
-  @override
-  Widget build(BuildContext context) {
-    return Assets.screenshotMobile1.image(height: 560);
   }
 }
 
@@ -106,12 +87,12 @@ class _InstructionButtons extends StatelessWidget {
             child: SelectionContainer.disabled(
               child: TextButton(
                 onPressed: () {},
-                child: Row(
+                child: const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Assets.play.image(width: 24, height: 24),
-                    const SizedBox(width: 8),
-                    const Text('Watch Video'),
+                    Icon(Icons.play_circle_outline,size: 24),
+                    SizedBox(width: 8),
+                    Text('Watch Video'),
                   ],
                 ),
               ),

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:landify_design_flutter/design_systems/components/assets/app_store_image.dart';
+import 'package:landify_design_flutter/design_systems/components/assets/google_play_image.dart';
+import 'package:landify_design_flutter/design_systems/components/assets/logo_with_text_image.dart';
 import 'package:landify_design_flutter/design_systems/components/max_container.dart';
 import 'package:landify_design_flutter/design_systems/components/responsive_row_column.dart';
 import 'package:landify_design_flutter/design_systems/components/text_link_button.dart';
 import 'package:landify_design_flutter/main_notifier.dart';
 import 'package:landify_design_flutter/utils/breakpoint.dart';
 import 'package:landify_design_flutter/utils/constants.dart';
-import 'package:landify_design_flutter/utils/assets.dart';
 import 'package:landify_design_flutter/utils/provider.dart';
 
 class NavBar extends StatefulWidget {
@@ -141,7 +143,7 @@ class _Navbar extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Assets.logoWithText.image(height: 32),
+              const LogoWithTextImage(),
               if (showNavigation) ...{
                 const SizedBox(width: 32),
                 const _Navigation(),
@@ -203,12 +205,12 @@ class _Apps extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return const Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Assets.googlePlay.image(height: 40),
-        const SizedBox(width: 12),
-        Assets.appStore.image(height: 40),
+        GooglePlayImage(),
+        SizedBox(width: 12),
+        AppStoreImage(),
       ],
     );
   }

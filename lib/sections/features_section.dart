@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
+import 'package:landify_design_flutter/design_systems/components/assets/feature_better_components_image.dart';
+import 'package:landify_design_flutter/design_systems/components/assets/feature_flexibility_image.dart';
+import 'package:landify_design_flutter/design_systems/components/assets/feature_multiple_layout_image.dart';
+import 'package:landify_design_flutter/design_systems/components/assets/feature_robust_workflow_image.dart';
+import 'package:landify_design_flutter/design_systems/components/assets/feature_user_friendly_image.dart';
+import 'package:landify_design_flutter/design_systems/components/assets/feature_well_organised_image.dart';
 import 'package:landify_design_flutter/design_systems/components/label_with_description.dart';
 import 'package:landify_design_flutter/design_systems/components/max_container.dart';
 import 'package:landify_design_flutter/design_systems/typography/text_styles.dart';
-import 'package:landify_design_flutter/utils/assets.dart';
 import 'package:landify_design_flutter/design_systems/colors/colors.dart';
 import 'package:landify_design_flutter/utils/breakpoint.dart';
 
@@ -59,32 +64,32 @@ class FeaturesSection extends StatelessWidget {
                 _FeatureItem(
                   title: 'Robust workflow',
                   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed erat nibh tristique ipsum.',
-                  icon: Assets.robustWorkflow,
+                  icon: FeatureRobustWorkflowImage(),
                 ),
                 _FeatureItem(
                   title: 'Flexibility',
                   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed erat nibh tristique ipsum.',
-                  icon: Assets.flexibility,
+                  icon: FeatureFlexibilityImage(),
                 ),
                 _FeatureItem(
                   title: 'User friendly',
                   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed erat nibh tristique ipsum.',
-                  icon: Assets.userFriendly,
+                  icon: FeatureUserFriendlyImage(),
                 ),
                 _FeatureItem(
                   title: 'Multiple layouts',
                   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed erat nibh tristique ipsum.',
-                  icon: Assets.multipleLayouts,
+                  icon: FeatureMultipleLayoutsImage(),
                 ),
                 _FeatureItem(
                   title: 'Better components',
                   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed erat nibh tristique ipsum.',
-                  icon: Assets.betterComponents,
+                  icon: FeatureBetterComponentsImage(),
                 ),
                 _FeatureItem(
                   title: 'Well organised',
                   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed erat nibh tristique ipsum.',
-                  icon: Assets.wellOrganised,
+                  icon: FeatureWellOrganisedImage(),
                 ),
               ],
             ),
@@ -106,7 +111,7 @@ class _FeatureItem extends StatelessWidget {
 
   final String description;
 
-  final AssetGenImage icon;
+  final Widget icon;
 
   @override
   Widget build(BuildContext context) {
@@ -116,7 +121,7 @@ class _FeatureItem extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            icon.image(height: 32),
+            icon,
             const SizedBox(height: 24),
             Text(
               title,

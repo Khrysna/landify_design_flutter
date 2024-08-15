@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:landify_design_flutter/design_systems/components/assets/app_store_image.dart';
+import 'package:landify_design_flutter/design_systems/components/assets/google_play_image.dart';
+import 'package:landify_design_flutter/design_systems/components/assets/logo_image.dart';
 import 'package:landify_design_flutter/design_systems/components/max_container.dart';
 import 'package:landify_design_flutter/design_systems/components/responsive_row_column.dart';
 import 'package:landify_design_flutter/design_systems/components/text_link_button.dart';
 import 'package:landify_design_flutter/design_systems/typography/text_styles.dart';
-import 'package:landify_design_flutter/utils/assets.dart';
 import 'package:landify_design_flutter/design_systems/colors/colors.dart';
 import 'package:landify_design_flutter/utils/breakpoint.dart';
 
@@ -44,9 +46,9 @@ class _Information extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
-          padding: const EdgeInsets.only(left: 8),
-          child: Assets.logoMini.image(height: 32, width: 32),
+        const Padding(
+          padding: EdgeInsets.only(left: 8),
+          child: LogoImage(),
         ),
         const SizedBox(height: 24),
         const Wrap(
@@ -97,9 +99,9 @@ class _GetApps extends StatelessWidget {
               style: AppTextStyles.bodyLargeMedium.copyWith(color: AppColors.neutral300),
             ),
             const SizedBox(height: 16),
-            Assets.googlePlay.image(height: 40),
+            const GooglePlayImage(),
             const SizedBox(height: 16),
-            Assets.appStore.image(height: 40),
+            const AppStoreImage(),
           ],
         ),
       ),

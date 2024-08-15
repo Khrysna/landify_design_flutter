@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:landify_design_flutter/design_systems/components/assets/logo_airbnb_image.dart';
+import 'package:landify_design_flutter/design_systems/components/assets/logo_hubspot_image.dart';
+import 'package:landify_design_flutter/design_systems/components/assets/logo_strapi_image.dart';
+import 'package:landify_design_flutter/design_systems/components/assets/quote_background_image.dart';
+import 'package:landify_design_flutter/design_systems/components/assets/quote_image.dart';
 import 'package:landify_design_flutter/design_systems/components/label_with_description.dart';
 import 'package:landify_design_flutter/design_systems/components/max_container.dart';
 import 'package:landify_design_flutter/design_systems/components/responsive_row_column.dart';
 import 'package:landify_design_flutter/design_systems/typography/text_styles.dart';
-import 'package:landify_design_flutter/utils/assets.dart';
 import 'package:landify_design_flutter/design_systems/colors/colors.dart';
 import 'package:landify_design_flutter/utils/breakpoint.dart';
 
@@ -21,7 +25,7 @@ class StoriesSection extends StatelessWidget {
       child: MaxContainer(
         child: Stack(
           children: [
-            Assets.quote.image(height: 116),
+            const QuoteBackgroundImage(),
             ResponsiveRowColumn(
               layout: breakpoint.getRowTypeWhenLargerOrEqualTo(Breakpoint.laptop),
               rowSpacing: 32,
@@ -75,7 +79,7 @@ class _HeaderWithStories extends StatelessWidget {
                 child: SizedBox(
                   width: widthStoryContent,
                   child: const _StoryItem(
-                    icon: Assets.logoHubspot,
+                    icon: LogoHubspotImage.larger(),
                     story:
                         'To quickly start my startup landing page design, I was looking for a landing page UI Kit. Landify is one of the best landing page UI kit I have come across. It’s so flexible, well organised and easily editable.',
                     personName: 'Floyd Miles',
@@ -115,7 +119,7 @@ class _Stories extends StatelessWidget {
             SizedBox(
               width: widthStoryContent1,
               child: const _StoryItem(
-                icon: Assets.logoAirbnb,
+                icon: LogoAirbnbImage.larger(),
                 story:
                     'I used landify and created a landing page for my startup within a week. The Landify UI Kit is simple and highly intuitive, so anyone can use it.',
                 personName: 'Jane Cooper',
@@ -127,7 +131,7 @@ class _Stories extends StatelessWidget {
             SizedBox(
               width: widthStoryContent2,
               child: const _StoryItem(
-                icon: Assets.logoStrapi,
+                icon: LogoStrapiImage(),
                 story: 'Landify saved our time in designing my company page.',
                 personName: 'Kristin Watson',
                 position: 'Co-Founder',
@@ -150,7 +154,7 @@ class _StoryItem extends StatelessWidget {
     required this.company,
   });
 
-  final AssetGenImage icon;
+  final Widget icon;
 
   final String story;
 
@@ -185,12 +189,12 @@ class _StoryItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          icon.image(height: 32),
+          icon,
           const SizedBox(height: 32),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Assets.quote2.image(height: 16),
+              const QuoteImage(),
               const SizedBox(width: 16),
               Expanded(
                 child: Column(
