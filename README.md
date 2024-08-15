@@ -4,7 +4,7 @@
 
 This project is a Flutter web implementation of the Landify Landing Page UI Kit. The UI design was provided by the Figma community and has been converted into a functional web application using Flutter.
 
-> **Note:** This is my learning project to explore website development and Flutter.
+> **Note:** This is my learning project to explore flutter website.
 
 ## 🌐 Live Demo
 
